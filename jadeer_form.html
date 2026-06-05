@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jadeer - Trip Status Form</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 { text-align: center; color: #333; margin-bottom: 10px; font-size: 24px; }
+        .subtitle { text-align: center; color: #666; font-size: 14px; margin-bottom: 30px; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; color: #333; font-weight: 600; font-size: 14px; }
+        select, input[type="text"], textarea {
+            width: 100%; padding: 15px; border: 2px solid #e0e0e0;
+            border-radius: 10px; font-size: 16px;
+        }
+        select:focus, input:focus { outline: none; border-color: #667eea; }
+        .status-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+        }
+        .status-option { position: relative; }
+        .status-option input { position: absolute; opacity: 0; }
+        .status-option label {
+            display: block; padding: 15px; background: #f5f5f5;
+            border-radius: 10px; text-align: center; cursor: pointer;
+            margin: 0; font-weight: normal;
+        }
+        .status-option input:checked + label {
+            background: #667eea; color: white; font-weight: 600;
+        }
+        .file-upload {
+            border: 2px dashed #ccc; border-radius: 10px;
+            padding: 30px; text-align: center; cursor: pointer;
+        }
+        .file-upload:hover { border-color: #667eea; background: #f8f9ff; }
+        .submit-btn {
+            width: 100%; padding: 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white; border: none; border-radius: 10px;
+            font-size: 18px; font-weight: 600; cursor: pointer;
+        }
+        .success {
+            display: none; background: #4caf50; color: white;
+            padding: 20px; border-radius: 10px; text-align: center; margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚛 Jadeer</h1>
+        <p class="subtitle">Trip Status Update Form</p>
+        
+        <form id="statusForm">
+            <div class="form-group">
+                <label>Driver Name *</label>
+                <select name="driver" required>
+                    <option value="">Select Driver</option>
+                    <option value="AHMAD NAWAZ KHAN">AHMAD NAWAZ KHAN</option>
+                    <option value="BISHNU BAHADUR THING">BISHNU BAHADUR THING</option>
+                    <option value="MAN BAHADUR GURUNG">MAN BAHADUR GURUNG</option>
+                    <option value="NABRAJ DHAMI">NABRAJ DHAMI</option>
+                    <option value="RAJENDRA THAPA">RAJENDRA THAPA</option>
+                    <option value="YOURAJ SURYABANSHI">YOURAJ SURYABANSHI</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Truck Number *</label>
+                <select name="truck" required>
+                    <option value="">Select Truck</option>
+                    <option value="6433 TSA">6433 TSA</option>
+                    <option value="2747 EDA">2747 EDA</option>
+                    <option value="4383 RXA">4383 RXA</option>
+                    <option value="4403 RXA">4403 RXA</option>
+                    <option value="2410 GSA">2410 GSA</option>
+                    <option value="4402 RXA">4402 RXA</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Container Number *</label>
+                <input type="text" name="container" placeholder="e.g., MEDU 1234567" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Current Status *</label>
+                <div class="status-grid">
+                    <div class="status-option">
+                        <input type="radio" name="status" id="reached" value="Reached" required>
+                        <label for="reached">📍 Reached</label>
+                    </div>
+                    <div class="status-option">
+                        <input type="radio" name="status" id="loading" value="Loading">
+                        <label for="loading">📦 Loading</label>
+                    </div>
+                    <div class="status-option">
+                        <input type="radio" name="status" id="unloaded" value="Unloaded">
+                        <label for="unloaded">✅ Unloaded</label>
+                    </div>
+                    <div class="status-option">
+                        <input type="radio" name="status" id="left" value="Left">
+                        <label for="left">🚪 Left</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Location/Port *</label>
+                <input type="text" name="location" placeholder="e.g., Dammam Port Gate 3" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Container Photo *</label>
+                <div class="file-upload" onclick="document.getElementById('photo').click()">
+                    <input type="file" name="photo" id="photo" accept="image/*" capture="camera" required style="display:none;">
+                    <p>📷 Tap to take photo</p>
+                    <p style="font-size: 12px; color: #666;">Make sure container number is visible</p>
+                </div>
+                <div id="preview" style="margin-top: 10px; text-align: center;"></div>
+            </div>
+            
+            <div class="form-group">
+                <label>Additional Notes</label>
+                <textarea name="notes" rows="3" placeholder="Any delays or issues..."></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">Submit Update</button>
+        </form>
+        
+        <div id="success" class="success">
+            ✅ Status updated successfully!<br>
+            <span style="font-size: 14px;">Your update has been saved.</span>
+        </div>
+    </div>
+    
+    <script>
+        // Photo preview
+        document.getElementById('photo').addEventListener('change', function(e) {
+            const preview = document.getElementById('preview');
+            if (e.target.files && e.target.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.innerHTML = '<img src="' + e.target.result + '" style="max-width: 100%; border-radius: 10px;">';
+                }
+                reader.readAsDataURL(e.target.files[0]);
+            }
+        });
+        
+        // Form submission
+        document.getElementById('statusForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = {
+                vendor: 'Jadeer',
+                timestamp: new Date().toISOString(),
+                driver: formData.get('driver'),
+                truck: formData.get('truck'),
+                container: formData.get('container'),
+                status: formData.get('status'),
+                location: formData.get('location'),
+                notes: formData.get('notes')
+            };
+            
+            // Save to localStorage (in a real app, this would send to a server)
+            let responses = JSON.parse(localStorage.getItem('jadeer_responses') || '[]');
+            responses.push(data);
+            localStorage.setItem('jadeer_responses', JSON.stringify(responses));
+            
+            // Show success
+            document.getElementById('success').style.display = 'block';
+            this.reset();
+            document.getElementById('preview').innerHTML = '';
+            
+            // Hide success after 3 seconds
+            setTimeout(() => {
+                document.getElementById('success').style.display = 'none';
+            }, 3000);
+            
+            // In production, you would send this data to a server:
+            // fetch('https://your-server.com/submit', {
+            //     method: 'POST',
+            //     body: formData
+            // });
+        });
+    </script>
+</body>
+</html>

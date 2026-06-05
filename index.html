@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEDLOG Driver Status Forms</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 { text-align: center; color: #333; margin-bottom: 10px; font-size: 28px; }
+        .subtitle { text-align: center; color: #666; font-size: 16px; margin-bottom: 40px; }
+        .vendor-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        .vendor-link {
+            display: block;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 18px;
+            transition: transform 0.2s;
+        }
+        .vendor-link:hover {
+            transform: translateY(-2px);
+        }
+        .instructions {
+            margin-top: 40px;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 10px;
+        }
+        .instructions h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        .instructions ol {
+            margin-left: 20px;
+            color: #666;
+        }
+        .instructions li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚛 MEDLOG Driver Status Forms</h1>
+        <p class="subtitle">Select your vendor to submit trip update</p>
+        
+        <div class="vendor-list">
+            <a href="jadeer.html" class="vendor-link">Jadeer</a>
+            <a href="al_shaks.html" class="vendor-link">Al Shaks</a>
+            <a href="dalel_aljawda.html" class="vendor-link">Dalel Aljawda</a>
+            <a href="move_time.html" class="vendor-link">Move Time</a>
+            <a href="sadan.html" class="vendor-link">Sadan</a>
+            <a href="safe_genset.html" class="vendor-link">Safe GeNSET</a>
+            <a href="modern_east.html" class="vendor-link">Modern East</a>
+            <a href="al_turq.html" class="vendor-link">Al turq (Abu Abdullah)</a>
+            <a href="safe_journey.html" class="vendor-link">Safe Journey</a>
+        </div>
+        
+        <div class="instructions">
+            <h2>📋 Setup Instructions</h2>
+            <ol>
+                <li>Create free account at <a href="https://formspree.io" target="_blank">formspree.io</a></li>
+                <li>Create 9 new forms (one per vendor)</li>
+                <li>Copy each form's ID (e.g., xrgdvepl)</li>
+                <li>Replace FORMSPREE_ID in each HTML file</li>
+                <li>Upload to GitHub Pages or any web host</li>
+                <li>Share vendor-specific links in WhatsApp groups</li>
+            </ol>
+            <p style="margin-top: 20px; color: #999; font-size: 14px;">
+                <strong>Note:</strong> Each vendor only sees their own form. Data is isolated.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
