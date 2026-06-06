@@ -254,6 +254,9 @@
             if (currentDriver.driver_ar) params.append('driver_ar', currentDriver.driver_ar);
             if (currentDriver.truck_ar) params.append('truck_ar', currentDriver.truck_ar);
             
+            // Add cache-busting timestamp
+            params.append('v', Date.now());
+            
             const fullURL = `${baseURL}?${params.toString()}`;
             document.getElementById('urlBox').textContent = fullURL;
             document.getElementById('result').classList.add('show');
