@@ -62,10 +62,12 @@
         <h1>🚛 Sadan</h1>
         <p class="subtitle" style="font-size: 16px; color: #555;">Trip Update / سفر کی تازہ ترین معلومات</p>
         
+        <!-- Replace FORMSPREE_ID with your actual Formspree form ID -->
         <form action="https://formspree.io/f/FORMSPREE_ID" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="_subject" value="Sadan Status Update">
             <input type="hidden" name="vendor" value="Sadan">
             
+            <!-- Driver Info Display -->
             <div class="form-group" style="background: #e8f5e9; padding: 15px; border-radius: 10px; border-right: 4px solid #4caf50;">
                 <label style="color: #2e7d32; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Driver / ڈرائیور</label>
                 <input type="text" id="driver" name="driver" style="background: transparent; border: none; font-size: 18px; font-weight: bold; color: #1b5e20; padding: 5px 0;" required>
@@ -76,43 +78,59 @@
                 <input type="text" id="truck" name="truck" style="background: transparent; border: none; font-size: 18px; font-weight: bold; color: #e65100; padding: 5px 0;" required>
             </div>
             
-            
-            
             <div class="form-group">
-                <label style="font-size: 16px;">📍 Kahan Hain? / کہاں ہیں؟ <span style="color: red;">*</span></label>
-                <div class="status-grid">
+                <label style="font-size: 16px;">� Current Status / موجودہ حالت <span style="color: red;">*</span></label>
+                <div class="status-grid" style="grid-template-columns: 1fr 1fr;">
                     <div class="status-option">
-                        <input type="radio" name="status" id="reached" value="Reached" required>
-                        <label for="reached" style="font-size: 14px;">
-                            <span style="font-size: 24px; display: block; margin-bottom: 5px;">📍</span>
-                            <strong>Reached</strong><br>
-                            <span style="font-size: 12px; opacity: 0.8;">پہنچ گئے</span>
+                        <input type="radio" name="status" id="loaded_inside" value="Loaded and Inside" required>
+                        <label for="loaded_inside" style="font-size: 13px; padding: 12px 8px;">
+                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">📦</span>
+                            <strong>Loaded and Inside</strong><br>
+                            <span style="font-size: 11px; opacity: 0.8;">لوڈ شدہ - اندر</span>
                         </label>
                     </div>
                     <div class="status-option">
-                        <input type="radio" name="status" id="loading" value="Loading">
-                        <label for="loading" style="font-size: 14px;">
-                            <span style="font-size: 24px; display: block; margin-bottom: 5px;">📦</span>
-                            <strong>Loading</strong><br>
-                            <span style="font-size: 12px; opacity: 0.8;">لوڈنگ ہو رہی</span>
+                        <input type="radio" name="status" id="loaded_left" value="Loaded and Left">
+                        <label for="loaded_left" style="font-size: 13px; padding: 12px 8px;">
+                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">🚛</span>
+                            <strong>Loaded and Left</strong><br>
+                            <span style="font-size: 11px; opacity: 0.8;">لوڈ شدہ - چلے گئے</span>
                         </label>
                     </div>
                     <div class="status-option">
-                        <input type="radio" name="status" id="unloaded" value="Unloaded">
-                        <label for="unloaded" style="font-size: 14px;">
-                            <span style="font-size: 24px; display: block; margin-bottom: 5px;">✅</span>
-                            <strong>Unloaded</strong><br>
-                            <span style="font-size: 12px; opacity: 0.8;">خالی ہو گیا</span>
+                        <input type="radio" name="status" id="unloaded_inside" value="Unloaded and Inside">
+                        <label for="unloaded_inside" style="font-size: 13px; padding: 12px 8px;">
+                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">✅</span>
+                            <strong>Unloaded and Inside</strong><br>
+                            <span style="font-size: 11px; opacity: 0.8;">خالی - اندر</span>
                         </label>
                     </div>
                     <div class="status-option">
-                        <input type="radio" name="status" id="left" value="Left">
-                        <label for="left" style="font-size: 14px;">
-                            <span style="font-size: 24px; display: block; margin-bottom: 5px;">🚪</span>
-                            <strong>Left</strong><br>
-                            <span style="font-size: 12px; opacity: 0.8;">چلے گئے</span>
+                        <input type="radio" name="status" id="unloaded_outside" value="Unloaded and Outside">
+                        <label for="unloaded_outside" style="font-size: 13px; padding: 12px 8px;">
+                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">🚪</span>
+                            <strong>Unloaded and Outside</strong><br>
+                            <span style="font-size: 11px; opacity: 0.8;">خالی - باہر</span>
                         </label>
                     </div>
+                    <div class="status-option">
+                        <input type="radio" name="status" id="nearby_loading" value="Nearby Loading Area">
+                        <label for="nearby_loading" style="font-size: 13px; padding: 12px 8px;">
+                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">⏳</span>
+                            <strong>Nearby Loading Area</strong><br>
+                            <span style="font-size: 11px; opacity: 0.8;">لوڈنگ ایریا کے قریب</span>
+                        </label>
+                    </div>
+                    <div class="status-option">
+                        <input type="radio" name="status" id="nearby_unloading" value="Nearby Unloading Area">
+                        <label for="nearby_unloading" style="font-size: 13px; padding: 12px 8px;">
+                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">🕐</span>
+                            <strong>Nearby Unloading Area</strong><br>
+                            <span style="font-size: 11px; opacity: 0.8;">لوڈ اتارنے والی جگہ کے قریب</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
                 </div>
             </div>
             
@@ -191,6 +209,7 @@
             document.getElementById('success').style.display = 'block';
         });
 
+        // Get URL parameters
         function getUrlParams() {
             const params = {};
             const queryString = window.location.search.slice(1);
@@ -204,19 +223,37 @@
             return params;
         }
 
+        // Pre-fill form on page load
         window.onload = function() {
             const params = getUrlParams();
+            
+            // Pre-fill driver name
             if (params.driver) {
                 document.getElementById('driver').value = params.driver;
                 document.getElementById('driver').readOnly = true;
             }
+            
+            // Pre-fill truck number
             if (params.truck) {
                 document.getElementById('truck').value = params.truck;
                 document.getElementById('truck').readOnly = true;
             }
             
+            // Pre-fill container
+            if (params.container) {
+                document.getElementById('container').value = params.container;
+            }
+            
+            // Show driver info banner
+            if (params.driver) {
+                const banner = document.createElement('div');
+                banner.style.cssText = 'background: #e3f2fd; padding: 15px; border-radius: 10px; margin-bottom: 20px; border-left: 4px solid #2196f3;';
+                banner.innerHTML = '<strong>👤 Driver:</strong> ' + params.driver + '<br><strong>🚛 Truck:</strong> ' + (params.truck || 'N/A');
+                document.querySelector('.container').insertBefore(banner, document.querySelector('h1').nextSibling);
+            }
         };
 
+        // Prevent going back to menu
         history.pushState(null, null, location.href);
         window.onpopstate = function() {
             history.pushState(null, null, location.href);
