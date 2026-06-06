@@ -86,7 +86,8 @@
                 <div class="status-grid" style="grid-template-columns: 1fr 1fr;">
                     <div class="status-option">
                         <input type="radio" name="status" id="waiting_loading_empty" value="Waiting Nearby Loading Area">
-                        <label for="waiting_loading_empty" style="font-size: 13px; padding: 12px 8px;">
+                        <label for="waiting_loading_empty" style="font-size: 13px; padding: 12px 8px; position: relative;">
+                            <span onclick="event.preventDefault(); speakUrdu('لوڈنگ کے قریب انتظار کر رہے ہیں');" style="position: absolute; top: 5px; right: 5px; font-size: 16px; cursor: pointer; background: #4caf50; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; z-index: 10;">🔊</span>
                             <span style="font-size: 20px; display: block; margin-bottom: 5px;">⏳</span>
                             <strong>Waiting Nearby Loading</strong><br>
                             <strong style="font-size: 12px; color: #333;">لوڈنگ کے قریب انتظار</strong>
@@ -94,7 +95,8 @@
                     </div>
                     <div class="status-option">
                         <input type="radio" name="status" id="waiting_unloading" value="Waiting Nearby Unloading Area">
-                        <label for="waiting_unloading" style="font-size: 13px; padding: 12px 8px;">
+                        <label for="waiting_unloading" style="font-size: 13px; padding: 12px 8px; position: relative;">
+                            <span onclick="event.preventDefault(); speakUrdu('ان لوڈنگ کے قریب انتظار کر رہے ہیں');" style="position: absolute; top: 5px; right: 5px; font-size: 16px; cursor: pointer; background: #4caf50; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; z-index: 10;">🔊</span>
                             <span style="font-size: 20px; display: block; margin-bottom: 5px;">🕐</span>
                             <strong>Waiting Nearby Unloading</strong><br>
                             <strong style="font-size: 12px; color: #333;">ان لوڈنگ کے قریب انتظار</strong>
@@ -102,7 +104,8 @@
                     </div>
                     <div class="status-option">
                         <input type="radio" name="status" id="unloaded_inside" value="Unloaded but Inside">
-                        <label for="unloaded_inside" style="font-size: 13px; padding: 12px 8px;">
+                        <label for="unloaded_inside" style="font-size: 13px; padding: 12px 8px; position: relative;">
+                            <span onclick="event.preventDefault(); speakUrdu('خالی ہوا، اندر ہے');" style="position: absolute; top: 5px; right: 5px; font-size: 16px; cursor: pointer; background: #4caf50; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; z-index: 10;">🔊</span>
                             <span style="font-size: 20px; display: block; margin-bottom: 5px;">✅</span>
                             <strong>Unloaded but Inside</strong><br>
                             <strong style="font-size: 12px; color: #333;">خالی ہوا - اندر</strong>
@@ -110,7 +113,8 @@
                     </div>
                     <div class="status-option">
                         <input type="radio" name="status" id="empty_left" value="Empty and Left">
-                        <label for="empty_left" style="font-size: 13px; padding: 12px 8px;">
+                        <label for="empty_left" style="font-size: 13px; padding: 12px 8px; position: relative;">
+                            <span onclick="event.preventDefault(); speakUrdu('خالی ہے، چلے گئے');" style="position: absolute; top: 5px; right: 5px; font-size: 16px; cursor: pointer; background: #4caf50; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; z-index: 10;">🔊</span>
                             <span style="font-size: 20px; display: block; margin-bottom: 5px;">🚗</span>
                             <strong>Empty and Left</strong><br>
                             <strong style="font-size: 12px; color: #333;">خالی - چلے گئے</strong>
@@ -118,7 +122,8 @@
                     </div>
                     <div class="status-option">
                         <input type="radio" name="status" id="empty_returning" value="Empty - Returning">
-                        <label for="empty_returning" style="font-size: 13px; padding: 12px 8px;">
+                        <label for="empty_returning" style="font-size: 13px; padding: 12px 8px; position: relative;">
+                            <span onclick="event.preventDefault(); speakUrdu('خالی ہے، واپس جا رہے ہیں');" style="position: absolute; top: 5px; right: 5px; font-size: 16px; cursor: pointer; background: #4caf50; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; z-index: 10;">🔊</span>
                             <span style="font-size: 20px; display: block; margin-bottom: 5px;">🛣️</span>
                             <strong>Empty - Returning</strong><br>
                             <strong style="font-size: 12px; color: #333;">خالی - واپس</strong>
@@ -126,7 +131,8 @@
                     </div>
                     <div class="status-option">
                         <input type="radio" name="status" id="loaded_but_inside" value="Loaded but Inside">
-                        <label for="loaded_but_inside" style="font-size: 13px; padding: 12px 8px;">
+                        <label for="loaded_but_inside" style="font-size: 13px; padding: 12px 8px; position: relative;">
+                            <span onclick="event.preventDefault(); speakUrdu('لوڈ شدہ، اندر ہے');" style="position: absolute; top: 5px; right: 5px; font-size: 16px; cursor: pointer; background: #4caf50; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; z-index: 10;">🔊</span>
                             <span style="font-size: 20px; display: block; margin-bottom: 5px;">📦</span>
                             <strong>Loaded but Inside</strong><br>
                             <strong style="font-size: 12px; color: #333;">لوڈ شدہ - اندر</strong>
@@ -134,7 +140,8 @@
                     </div>
                     <div class="status-option">
                         <input type="radio" name="status" id="loaded_and_left" value="Loaded and Left">
-                        <label for="loaded_and_left" style="font-size: 13px; padding: 12px 8px;">
+                        <label for="loaded_and_left" style="font-size: 13px; padding: 12px 8px; position: relative;">
+                            <span onclick="event.preventDefault(); speakUrdu('لوڈ شدہ، چلے گئے');" style="position: absolute; top: 5px; right: 5px; font-size: 16px; cursor: pointer; background: #4caf50; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; z-index: 10;">🔊</span>
                             <span style="font-size: 20px; display: block; margin-bottom: 5px;">🚚</span>
                             <strong>Loaded and Left</strong><br>
                             <strong style="font-size: 12px; color: #333;">لوڈ شدہ - چلے گئے</strong>
@@ -151,7 +158,8 @@
                 <div class="status-grid" style="grid-template-columns: 1fr 1fr;">
                     <div class="status-option">
                         <input type="radio" name="status" id="waiting_emptying" value="Waiting Nearby Emptying Container Area">
-                        <label for="waiting_emptying" style="font-size: 13px; padding: 12px 8px;">
+                        <label for="waiting_emptying" style="font-size: 13px; padding: 12px 8px; position: relative;">
+                            <span onclick="event.preventDefault(); speakUrdu('خالی کرنے کے قریب انتظار کر رہے ہیں');" style="position: absolute; top: 5px; right: 5px; font-size: 16px; cursor: pointer; background: #2196f3; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; z-index: 10;">🔊</span>
                             <span style="font-size: 20px; display: block; margin-bottom: 5px;">⏳</span>
                             <strong>Waiting Nearby Emptying</strong><br>
                             <strong style="font-size: 12px; color: #333;">خالی کرنے کے قریب انتظار</strong>
@@ -159,7 +167,8 @@
                     </div>
                     <div class="status-option">
                         <input type="radio" name="status" id="waiting_loading_filled" value="Waiting Nearby Loading Area">
-                        <label for="waiting_loading_filled" style="font-size: 13px; padding: 12px 8px;">
+                        <label for="waiting_loading_filled" style="font-size: 13px; padding: 12px 8px; position: relative;">
+                            <span onclick="event.preventDefault(); speakUrdu('لوڈنگ کے قریب انتظار کر رہے ہیں');" style="position: absolute; top: 5px; right: 5px; font-size: 16px; cursor: pointer; background: #2196f3; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; z-index: 10;">🔊</span>
                             <span style="font-size: 20px; display: block; margin-bottom: 5px;">🕐</span>
                             <strong>Waiting Nearby Loading</strong><br>
                             <strong style="font-size: 12px; color: #333;">لوڈنگ کے قریب انتظار</strong>
@@ -167,7 +176,8 @@
                     </div>
                     <div class="status-option">
                         <input type="radio" name="status" id="loaded_inside" value="Loaded and Inside">
-                        <label for="loaded_inside" style="font-size: 13px; padding: 12px 8px;">
+                        <label for="loaded_inside" style="font-size: 13px; padding: 12px 8px; position: relative;">
+                            <span onclick="event.preventDefault(); speakUrdu('لوڈ شدہ، اندر ہے');" style="position: absolute; top: 5px; right: 5px; font-size: 16px; cursor: pointer; background: #2196f3; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; z-index: 10;">🔊</span>
                             <span style="font-size: 20px; display: block; margin-bottom: 5px;">📦</span>
                             <strong>Loaded and Inside</strong><br>
                             <strong style="font-size: 12px; color: #333;">لوڈ شدہ - اندر</strong>
@@ -175,7 +185,8 @@
                     </div>
                     <div class="status-option">
                         <input type="radio" name="status" id="loaded_outside" value="Loaded and Outside">
-                        <label for="loaded_outside" style="font-size: 13px; padding: 12px 8px;">
+                        <label for="loaded_outside" style="font-size: 13px; padding: 12px 8px; position: relative;">
+                            <span onclick="event.preventDefault(); speakUrdu('لوڈ شدہ، باہر ہے');" style="position: absolute; top: 5px; right: 5px; font-size: 16px; cursor: pointer; background: #2196f3; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; z-index: 10;">🔊</span>
                             <span style="font-size: 20px; display: block; margin-bottom: 5px;">🚛</span>
                             <strong>Loaded and Outside</strong><br>
                             <strong style="font-size: 12px; color: #333;">لوڈ شدہ - باہر</strong>
@@ -183,7 +194,8 @@
                     </div>
                     <div class="status-option">
                         <input type="radio" name="status" id="empty_left_filled" value="Empty and Left">
-                        <label for="empty_left_filled" style="font-size: 13px; padding: 12px 8px;">
+                        <label for="empty_left_filled" style="font-size: 13px; padding: 12px 8px; position: relative;">
+                            <span onclick="event.preventDefault(); speakUrdu('خالی ہے، چلے گئے');" style="position: absolute; top: 5px; right: 5px; font-size: 16px; cursor: pointer; background: #2196f3; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; z-index: 10;">🔊</span>
                             <span style="font-size: 20px; display: block; margin-bottom: 5px;">🚗</span>
                             <strong>Empty and Left</strong><br>
                             <strong style="font-size: 12px; color: #333;">خالی - چلے گئے</strong>
@@ -191,6 +203,42 @@
                     </div>
                     <div class="status-option">
                         <input type="radio" name="status" id="empty_returning_filled" value="Empty - Returning">
+                        <label for="empty_returning_filled" style="font-size: 13px; padding: 12px 8px; position: relative;">
+                            <span onclick="event.preventDefault(); speakUrdu('خالی ہے، واپس جا رہے ہیں');" style="position: absolute; top: 5px; right: 5px; font-size: 16px; cursor: pointer; background: #2196f3; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; z-index: 10;">🔊</span>
+                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">🛣️</span>
+                            <strong>Empty - Returning</strong><br>
+                            <strong style="font-size: 12px; color: #333;">خالی - واپس</strong>
+                        </label>
+                    </div>
+                    <div class="status-option">
+                        <input type="radio" name="status" id="waiting_returning_empty" value="Waiting Nearby Returning Empty Container Area">
+                        <label for="waiting_returning_empty" style="font-size: 13px; padding: 12px 8px; position: relative;">
+                            <span onclick="event.preventDefault(); speakUrdu('خالی کنٹینر واپسی کے قریب انتظار کر رہے ہیں');" style="position: absolute; top: 5px; right: 5px; font-size: 16px; cursor: pointer; background: #2196f3; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; z-index: 10;">🔊</span>
+                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">🔄</span>
+                            <strong>Waiting Nearby Returning</strong><br>
+                            <strong style="font-size: 12px; color: #333;">خالی واپسی کے قریب</strong>
+                        </label>
+                    </div>
+                    <div class="status-option">
+                        <input type="radio" name="status" id="empty_offloaded_inside" value="Empty Container Offloaded but Inside">
+                        <label for="empty_offloaded_inside" style="font-size: 13px; padding: 12px 8px; position: relative;">
+                            <span onclick="event.preventDefault(); speakUrdu('خالی اتارا، اندر ہے');" style="position: absolute; top: 5px; right: 5px; font-size: 16px; cursor: pointer; background: #2196f3; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; z-index: 10;">🔊</span>
+                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">📍</span>
+                            <strong>Empty Offloaded Inside</strong><br>
+                            <strong style="font-size: 12px; color: #333;">خالی اتارا - اندر</strong>
+                        </label>
+                    </div>
+                    <div class="status-option">
+                        <input type="radio" name="status" id="empty_offloaded_outside" value="Empty Container Offloaded and Outside">
+                        <label for="empty_offloaded_outside" style="font-size: 13px; padding: 12px 8px; position: relative;">
+                            <span onclick="event.preventDefault(); speakUrdu('خالی اتارا، باہر ہے');" style="position: absolute; top: 5px; right: 5px; font-size: 16px; cursor: pointer; background: #2196f3; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; z-index: 10;">🔊</span>
+                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">🚪</span>
+                            <strong>Empty Offloaded Outside</strong><br>
+                            <strong style="font-size: 12px; color: #333;">خالی اتارا - باہر</strong>
+                        </label>
+                    </div>
+                </div>
+            </div>
                         <label for="empty_returning_filled" style="font-size: 13px; padding: 12px 8px;">
                             <span style="font-size: 20px; display: block; margin-bottom: 5px;">🛣️</span>
                             <strong>Empty - Returning</strong><br>
@@ -295,6 +343,37 @@
     </div>
     
     <script>
+        // Urdu Text-to-Speech function
+        function speakUrdu(text) {
+            if ('speechSynthesis' in window) {
+                // Cancel any ongoing speech
+                window.speechSynthesis.cancel();
+                
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'ur-PK'; // Urdu (Pakistan)
+                utterance.rate = 0.9; // Slightly slower for clarity
+                utterance.pitch = 1;
+                
+                // Try to find an Urdu voice
+                const voices = window.speechSynthesis.getVoices();
+                const urduVoice = voices.find(voice => voice.lang.includes('ur') || voice.lang.includes('Urdu'));
+                if (urduVoice) {
+                    utterance.voice = urduVoice;
+                }
+                
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert('Voice feature not supported on this device');
+            }
+        }
+        
+        // Load voices when available
+        if (speechSynthesis.onvoiceschanged !== undefined) {
+            speechSynthesis.onvoiceschanged = function() {
+                // Voices loaded
+            };
+        }
+
         document.querySelector('form').addEventListener('submit', function() {
             document.getElementById('success').style.display = 'block';
         });
