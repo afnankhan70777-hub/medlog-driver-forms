@@ -259,5 +259,12 @@
             history.pushState(null, null, location.href);
         };
     </script>
+
+    <script>
+        // Force reload if page is cached (check if loaded from cache)
+        if (performance.navigation.type === 2) {
+            location.reload(true);
+        }
+    </script>
 </body>
 </html>
