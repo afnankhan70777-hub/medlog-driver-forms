@@ -1,0 +1,640 @@
+{
+  "Jadeer": [
+    {
+      "driver_en": "TASSADUQ HUSSAIN",
+      "driver_ar": "تصدق حسين محمد إرشاد",
+      "truck_en": "4381 RXA",
+      "truck_ar": "٤٣٨١ أ ص ر"
+    },
+    {
+      "driver_en": "BISHNU BAHADUR THING",
+      "driver_ar": "بيشنو بهادور ذينغ",
+      "truck_en": "2747 EDA",
+      "truck_ar": "٢٧٤٧ أ د ع"
+    },
+    {
+      "driver_en": "SUNIL KUMAR CHAUDHARY",
+      "driver_ar": "سونيل كومار كومار تشودري",
+      "truck_en": "3361 JSA",
+      "truck_ar": "٣٣٦١ أ س ح"
+    },
+    {
+      "driver_en": "SACHIN CHAUDHARY",
+      "driver_ar": "ساتشين تشودري",
+      "truck_en": "6418 TSA",
+      "truck_ar": "٦٤١٨ أ س ط"
+    },
+    {
+      "driver_en": "NETRA BAHADUR MAGAR",
+      "driver_ar": "NETRA BAHADUR MAGAR",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "JIT KUMAR YONJAN",
+      "driver_ar": "JIT KUMAR YONJAN",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "MAN BAHADUR GURUNG",
+      "driver_ar": "مان بهادور غرونغ",
+      "truck_en": "4383 RXA",
+      "truck_ar": "٤٣٨٣ أ ص ر"
+    },
+    {
+      "driver_en": "NABRAJ DHAMI",
+      "driver_ar": "نابراج دامي",
+      "truck_en": "4403 RXA",
+      "truck_ar": "٤٤٠٣ أ س ر"
+    },
+    {
+      "driver_en": "PREM BAHADUR BHANDARI",
+      "driver_ar": "بريم بهادور بهانداري",
+      "truck_en": "4407 RXA",
+      "truck_ar": "٤٤٠٧ أ ص ر"
+    },
+    {
+      "driver_en": "BIMLESH PRASAD MAHATO",
+      "driver_ar": "بيمليش براساد ماهاتو",
+      "truck_en": "4512 RXA",
+      "truck_ar": "٤٥١٢ ا ص ر"
+    },
+    {
+      "driver_en": "SANTOSH RAI",
+      "driver_ar": "سانتوش راي",
+      "truck_en": "4514 RXA",
+      "truck_ar": "٤٥١٤ أ ص ر"
+    },
+    {
+      "driver_en": "MOMIN KHAN",
+      "driver_ar": "MOMIN KHAN",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "IJAZ AHMED NAIK MOHAMMED",
+      "driver_ar": "IJAZ AHMED NAIK MOHAMMED",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "UPENDRA KUMAR CHAUDHARY",
+      "driver_ar": "UPENDRA KUMAR CHAUDHARY",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "ANIL RAI",
+      "driver_ar": "ANIL RAI",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "RAJENDRA THAPA",
+      "driver_ar": "راجيندرا ثابا ثابا ثابا",
+      "truck_en": "2410 GSA",
+      "truck_ar": "٢٤١٠ أ س ق"
+    },
+    {
+      "driver_en": "RAM BAHADUR THARU",
+      "driver_ar": "RAM BAHADUR THARU",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "MOHAMMAD KHALID SHAKEEL AHMAD",
+      "driver_ar": "MOHAMMAD KHALID SHAKEEL AHMAD",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "MUHAMMED ISHTIAQ",
+      "driver_ar": "MUHAMMED ISHTIAQ",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "REKHA RAM",
+      "driver_ar": "REKHA RAM",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "MOHAMMAD ASLAM",
+      "driver_ar": "MOHAMMAD ASLAM",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "YOURAJ SURYABANSHI",
+      "driver_ar": "يوراج يوراج يوراج سوريا بانشي",
+      "truck_en": "4402 RXA",
+      "truck_ar": "٤٤٠٢ أ ص ر"
+    },
+    {
+      "driver_en": "DAN BAHADUR KARKI",
+      "driver_ar": "DAN BAHADUR KARKI",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "MILAN JIMBA",
+      "driver_ar": "MILAN JIMBA",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "RUDRA BAHADUR MANGRATI",
+      "driver_ar": "RUDRA BAHADUR MANGRATI",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "AHMAD NAWAZ KHAN KHALAS KHAN",
+      "driver_ar": "احمد نواز خان خلاص خان",
+      "truck_en": "6433 TSA",
+      "truck_ar": "٦٤٣٣ أ س ط"
+    },
+    {
+      "driver_en": "RIJU BABU SUNAR",
+      "driver_ar": "RIJU BABU SUNAR",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "IBNE AMIN FAZLE HAKIM",
+      "driver_ar": "IBNE AMIN FAZLE HAKIM",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "MUMMAD AYYAZ NAIK",
+      "driver_ar": "MUMMAD AYYAZ NAIK",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "BABURAM ADHIKARI",
+      "driver_ar": "BABURAM ADHIKARI",
+      "truck_en": "",
+      "truck_ar": ""
+    }
+  ],
+  "Khutut Al Ajyal Transport": [
+    {
+      "driver_en": "MUHAMMAD ASIF MANZOOR HUSSAIN",
+      "driver_ar": "MUHAMMAD ASIF MANZOOR HUSSAIN",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "MUHAMMAD FIAZ MUHAMMAD RAMZAN",
+      "driver_ar": "MUHAMMAD FIAZ MUHAMMAD RAMZAN",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "IJAZ AHMAD MUHAMMAD ANWAR",
+      "driver_ar": "IJAZ AHMAD MUHAMMAD ANWAR",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "ASIF YAMIN",
+      "driver_ar": "ASIF YAMIN",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "MUHAMMAD TAUQEER KHAN MUHAMMAD MISKEEN",
+      "driver_ar": "MUHAMMAD TAUQEER KHAN MUHAMMAD MISKEEN",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "SAJID ALI LIAQAT ALI",
+      "driver_ar": "SAJID ALI LIAQAT ALI",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "TAYYAB HUSSAIN MAQSOOD BAIG",
+      "driver_ar": "TAYYAB HUSSAIN MAQSOOD BAIG",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "MUHAMMAD AZHAR MUHAMMAD RIASAT",
+      "driver_ar": "MUHAMMAD AZHAR MUHAMMAD RIASAT",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "IMTIAZ AHMED GHULAM RASOOL",
+      "driver_ar": "امتياز رسول",
+      "truck_en": "5449 LDA",
+      "truck_ar": "٥٤٤٩ أ د ل"
+    },
+    {
+      "driver_en": "KALEEM ULLAH GHULAM YASIN",
+      "driver_ar": "KALEEM ULLAH GHULAM YASIN",
+      "truck_en": "",
+      "truck_ar": ""
+    }
+  ],
+  "Sadan": [
+    {
+      "driver_en": "ABID MEHMOOD SHOKAT ALI",
+      "driver_ar": "ABID MEHMOOD SHOKAT ALI",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "Shah Nawaz Abid Khan",
+      "driver_ar": "شاه نواز عابد خان",
+      "truck_en": "3977 TTA",
+      "truck_ar": "٣٩٧٧ أ ط ط"
+    },
+    {
+      "driver_en": "Muhammad Saleem Muhammad Faqir",
+      "driver_ar": "محمد سليم محمد فقير",
+      "truck_en": "5393 JTA",
+      "truck_ar": "٥٣٩٣ أ ط ح"
+    },
+    {
+      "driver_en": "MUHAMMAD YASEEN NAIMAT SHAH",
+      "driver_ar": "MUHAMMAD YASEEN NAIMAT SHAH",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "Hussain Ahmad Khanadar",
+      "driver_ar": "حسين أحمد كاندا",
+      "truck_en": "5394 JTA",
+      "truck_ar": "٥٣٩٤ أ ط ح"
+    },
+    {
+      "driver_en": "GUL RAHMAN RASOOL KHAN",
+      "driver_ar": "غول رحمن رال خان",
+      "truck_en": "3980 TTA",
+      "truck_ar": "٣٩٨٠ أ ط ط"
+    },
+    {
+      "driver_en": "Irfan khan said jabbar",
+      "driver_ar": "عرفان خان سعيد جبار",
+      "truck_en": "5396 JTA",
+      "truck_ar": "٥٣٩٦ أ ط ح"
+    },
+    {
+      "driver_en": "Rehmatullah",
+      "driver_ar": "ريم الله أمان الله",
+      "truck_en": "3979 T T A",
+      "truck_ar": "٣٩٧٩ أ ط ط"
+    },
+    {
+      "driver_en": "Bilal Syed",
+      "driver_ar": "بلال سيد ملا خان",
+      "truck_en": " 3976 T T A",
+      "truck_ar": "۳۹۷٦ أ ط ط"
+    },
+    {
+      "driver_en": "Mohammad Javed",
+      "driver_ar": "محمد جافيد جميل أحمد",
+      "truck_en": "9957 T X A",
+      "truck_ar": "٩٩٥٧ ص ط أ"
+    }
+  ],
+  "Safe Journey": [
+    {
+      "driver_en": "IFTIKHAR AHMAD",
+      "driver_ar": "افتخار احمد نزار محمد",
+      "truck_en": "JRA-5734",
+      "truck_ar": "٥٧٣٤ أ ر ح"
+    },
+    {
+      "driver_en": "SATNAM SINGH",
+      "driver_ar": "SATNAM SINGH",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "MD JUWAIL HASEEN",
+      "driver_ar": "MD JUWAIL HASEEN",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "FARMAN SAHAJAD",
+      "driver_ar": "فرمان شهزاد",
+      "truck_en": "VRA-1525",
+      "truck_ar": "١٥٢٥ أ ر ي"
+    },
+    {
+      "driver_en": "NASIR ABBAS",
+      "driver_ar": "ناصر عباس محمد عباس",
+      "truck_en": "JRA-3645",
+      "truck_ar": "٣٦٤٥ أ ر ح"
+    },
+    {
+      "driver_en": "ANUJ DALEEP",
+      "driver_ar": "انوج دليب شرما",
+      "truck_en": "JRA-6349",
+      "truck_ar": "٦٣٤٩ أ ر ح"
+    },
+    {
+      "driver_en": "MOHAMMAD SHUAIB",
+      "driver_ar": "محمد شيب",
+      "truck_en": "VRA-1537",
+      "truck_ar": "١٥٣٧ أ ر ي"
+    },
+    {
+      "driver_en": "AMZAD KHAN ASGAR",
+      "driver_ar": "AMZAD KHAN ASGAR",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "MUHAMMAD ANSAR",
+      "driver_ar": "MUHAMMAD ANSAR",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "SACHIN PAL MUNDRA",
+      "driver_ar": "SACHIN PAL MUNDRA",
+      "truck_en": "",
+      "truck_ar": ""
+    }
+  ],
+  "Al turq (Abu Abdullah)": [
+    {
+      "driver_en": "VINOD KUMAR RAGHUNATH PRASAD",
+      "driver_ar": "VINOD KUMAR RAGHUNATH PRASAD",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "MOHAMMAD ISTAKHAR MIRZA",
+      "driver_ar": "محمد استخار مرزة",
+      "truck_en": "7196 HXA",
+      "truck_ar": "٧١٩٦ ا ص ه"
+    },
+    {
+      "driver_en": "MAFOOZ KHAN",
+      "driver_ar": "محفوظ خان",
+      "truck_en": "5149 VXA",
+      "truck_ar": "٥١٤٩ أ ص ي"
+    },
+    {
+      "driver_en": "SLAHUDDEEN MAHUBUDDEEN TAHRUNNISHA",
+      "driver_ar": "SLAHUDDEEN MAHUBUDDEEN TAHRUNNISHA",
+      "truck_en": "",
+      "truck_ar": ""
+    }
+  ],
+  "Al Shaks ": [
+    {
+      "driver_en": "Mohd Jaid Khan",
+      "driver_ar": "محمد جايد جايد خان",
+      "truck_en": "2954 KRA",
+      "truck_ar": "٢٩٥٤ أ ر ك"
+    },
+    {
+      "driver_en": "Mohanad Mustafa Elshaib Ali",
+      "driver_ar": "Mohanad Mustafa Elshaib Ali",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "MOHAMMAD SADDAM ",
+      "driver_ar": "MOHAMMAD SADDAM ",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "Abdelrazig Ali Mohamed Saeed",
+      "driver_ar": "عبدالرازق علي محمد سعيد",
+      "truck_en": "2715 RRA",
+      "truck_ar": "٢٧١٥ أ ر ر"
+    },
+    {
+      "driver_en": "Ram Sevak Phool Chand Yadav",
+      "driver_ar": "رام سيفاك فال شاند ياداف",
+      "truck_en": "2579 VRA",
+      "truck_ar": "أ ر ي ٢٥٧٩"
+    },
+    {
+      "driver_en": "Punya Prasad Bastola",
+      "driver_ar": "بونيا براساد باستولا",
+      "truck_en": "2990 KRA",
+      "truck_ar": "٢٩٩٠ أ ر ك"
+    },
+    {
+      "driver_en": "Yahaya Mutala",
+      "driver_ar": "Yahaya Mutala",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "Raju Yadav Bheem Yadav",
+      "driver_ar": "راجو ياداف بيم ياداف",
+      "truck_en": "2585 VRA",
+      "truck_ar": "٢٥٨٥ أ ر ي"
+    },
+    {
+      "driver_en": "Rubel Hossain",
+      "driver_ar": "روبيل هوسين",
+      "truck_en": "6752 NRA",
+      "truck_ar": "٦٧٥٢ أ ر ن"
+    },
+    {
+      "driver_en": "Mohd Sagir Mohd Amin",
+      "driver_ar": "مهد صغير مهد امين",
+      "truck_en": "7083 STA",
+      "truck_ar": "٧٠٨٣ أ ط س"
+    },
+    {
+      "driver_en": "Mohd Wajahul Mohd Jamil Uddin",
+      "driver_ar": "محمد وجهل محمد جميل ادين",
+      "truck_en": "4504 KTA",
+      "truck_ar": "٤٥٠٤ أ ط ك"
+    },
+    {
+      "driver_en": "ALBAHRANI ABDULWAHAB ZAKI A",
+      "driver_ar": "ALBAHRANI ABDULWAHAB ZAKI A",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "MOTI LAL DAMAI",
+      "driver_ar": "موتي لال داماي",
+      "truck_en": "2974 KRA",
+      "truck_ar": "أ ر ك ٢٩٧٤"
+    },
+    {
+      "driver_en": "MOHD AHMAD",
+      "driver_ar": "MOHD AHMAD",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "MUHAMMAD SHAHROZ",
+      "driver_ar": "MUHAMMAD SHAHROZ",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "NASEEM KHAN NOOR BAB KHAN",
+      "driver_ar": "NASEEM KHAN NOOR BAB KHAN",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "SAHIL THAKUR",
+      "driver_ar": "SAHIL THAKUR",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "YOUSAF KHAN FAZAL MAULA",
+      "driver_ar": "يوسف فيصل مولا خان",
+      "truck_en": "9811 TXA",
+      "truck_ar": "٩٨١١ أ ص ط"
+    }
+  ],
+  "Move Time ": [
+    {
+      "driver_en": "RAHID KHAN",
+      "driver_ar": "راحد خان - سيفور",
+      "truck_en": "8543 DXA",
+      "truck_ar": "٨٥٤٣ أ ص د"
+    },
+    {
+      "driver_en": "MOHMAD WALI",
+      "driver_ar": "محمد والي أجا خان",
+      "truck_en": "5530 HXA",
+      "truck_ar": "٥٥٣٠ أ س خ"
+    },
+    {
+      "driver_en": "HAZRAT BILAL",
+      "driver_ar": "حضرت بلال شيرولي",
+      "truck_en": "5531 HXA",
+      "truck_ar": "٥٥٣١ أ ص هـ"
+    },
+    {
+      "driver_en": "SHAHID MEHMOOD ARSHAD MEHMOOD",
+      "driver_ar": "SHAHID MEHMOOD ARSHAD MEHMOOD",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "MUHAMMAD NOOR STORI KHAN",
+      "driver_ar": "MUHAMMAD NOOR STORI KHAN",
+      "truck_en": "",
+      "truck_ar": ""
+    }
+  ],
+  "Dalel Aljawda": [
+    {
+      "driver_en": "Keshav Ghimier",
+      "driver_ar": "Keshav Ghimier",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "Fida Hussain Imdad Hussain",
+      "driver_ar": "فدا حسين امداد حسين",
+      "truck_en": "7525 URA",
+      "truck_ar": "٧٥٢٥ أ ر و"
+    },
+    {
+      "driver_en": "Abag Khan Habib",
+      "driver_ar": "Abag Khan Habib",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "Farhad khan Lal",
+      "driver_ar": "فرهاد خان لال كيم خان",
+      "truck_en": "2001 HRA",
+      "truck_ar": "٢٠٠١ أ ر ه"
+    },
+    {
+      "driver_en": "Sultan Matlub",
+      "driver_ar": "هوية مقيم",
+      "truck_en": "9256 GRA",
+      "truck_ar": "٩٢٥٦ أ ر ق"
+    }
+  ],
+  "Safe GeNSET": [
+    {
+      "driver_en": "MUSRIF AMIRUDDIN",
+      "driver_ar": "مسرف أميرالدين",
+      "truck_en": "HRA-3764",
+      "truck_ar": "٣٧٦٤ ر ه أ"
+    },
+    {
+      "driver_en": "MOHAMMAD KAIF",
+      "driver_ar": "محمد كايف",
+      "truck_en": "VRA-1534",
+      "truck_ar": "١٥٣٤ أ ر ي"
+    },
+    {
+      "driver_en": "TAJIM SARAFAT ALI",
+      "driver_ar": "TAJIM SARAFAT ALI",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "MOHD HASEEN",
+      "driver_ar": "MOHD HASEEN",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "AZIZ UR REHMAN SHAH BALI JAN",
+      "driver_ar": "AZIZ UR REHMAN SHAH BALI JAN",
+      "truck_en": "",
+      "truck_ar": ""
+    }
+  ],
+  "Modern East": [
+    {
+      "driver_en": "Danish Ashraf",
+      "driver_ar": "دنيش اشرف محمد خان",
+      "truck_en": "2818 TTA",
+      "truck_ar": "٢٨١٨ أ ط ط"
+    },
+    {
+      "driver_en": "Ameer Hamza ",
+      "driver_ar": "Ameer Hamza ",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "MUHAMMAD UMAR MUHAMMAD ARSHAD",
+      "driver_ar": "MUHAMMAD UMAR MUHAMMAD ARSHAD",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "Muhammad Mushtaq Ghulam Nabi",
+      "driver_ar": "Muhammad Mushtaq Ghulam Nabi",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "Muhammad Asghar Muhammad Riaz",
+      "driver_ar": "Muhammad Asghar Muhammad Riaz",
+      "truck_en": "",
+      "truck_ar": ""
+    },
+    {
+      "driver_en": "Muhammad Irfan Fiaz Ahmad",
+      "driver_ar": "Muhammad Irfan Fiaz Ahmad",
+      "truck_en": "",
+      "truck_ar": ""
+    }
+  ]
+}
