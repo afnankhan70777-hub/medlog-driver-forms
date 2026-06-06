@@ -5,19 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MEDLOG Driver Form Generator</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
         }
-        
         .container {
             max-width: 600px;
             margin: 0 auto;
@@ -26,278 +20,203 @@
             padding: 30px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
-        
-        h1 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 10px;
-            font-size: 24px;
-        }
-        
-        .subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 30px;
-            font-size: 14px;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: #333;
-            font-weight: 600;
-        }
-        
-        select:disabled {
-            background: #f5f5f5;
-            color: #999;
-        }
-        
-        .loading {
-            text-align: center;
-            color: #666;
-            padding: 20px;
-        }
-        
-        .driver-info {
-            background: #e8f5e9;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            border-left: 4px solid #4caf50;
-        }
-        
-        .driver-info h4 {
-            color: #2e7d32;
-            margin-bottom: 10px;
-        }
-        
-        .driver-info p {
-            margin: 5px 0;
-            color: #555;
-        }
-            color: #333;
-            font-weight: 600;
-        }
-        
+        h1 { text-align: center; color: #333; margin-bottom: 10px; font-size: 24px; }
+        .subtitle { text-align: center; color: #666; margin-bottom: 30px; font-size: 14px; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; color: #333; font-weight: 600; }
         select, input {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 16px;
-            transition: border-color 0.3s;
+            width: 100%; padding: 12px; border: 2px solid #e0e0e0;
+            border-radius: 10px; font-size: 16px;
         }
-        
-        select:focus, input:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-        
+        select:focus, input:focus { outline: none; border-color: #667eea; }
+        select:disabled { background: #f5f5f5; color: #999; }
         button {
-            width: 100%;
-            padding: 15px;
+            width: 100%; padding: 15px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 18px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
+            color: white; border: none; border-radius: 10px;
+            font-size: 18px; font-weight: 600; cursor: pointer;
         }
-        
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-        }
-        
-        button:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            transform: none;
-        }
-        
-        .result {
-            margin-top: 30px;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            display: none;
-        }
-        
-        .result.show {
-            display: block;
-        }
-        
-        .result h3 {
-            color: #333;
-            margin-bottom: 15px;
-        }
-        
-        .url-box {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            border: 2px solid #667eea;
-            word-break: break-all;
-            margin-bottom: 15px;
-            font-family: monospace;
-            font-size: 14px;
-        }
-        
-        .copy-btn {
-            background: #28a745;
-            margin-bottom: 10px;
-        }
-        
-        .whatsapp-btn {
-            background: #25d366;
-        }
-        
-        .instructions {
-            margin-top: 30px;
-            padding: 20px;
-            background: #e3f2fd;
-            border-radius: 10px;
-            border-left: 4px solid #2196f3;
-        }
-        
-        .instructions h3 {
-            color: #1976d2;
-            margin-bottom: 10px;
-        }
-        
-        .instructions ol {
-            margin-left: 20px;
-            color: #555;
-        }
-        
-        .instructions li {
-            margin-bottom: 8px;
-        }
+        button:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4); }
+        .result { margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px; display: none; }
+        .result.show { display: block; }
+        .url-box { background: white; padding: 15px; border-radius: 8px; border: 2px solid #667eea; word-break: break-all; margin-bottom: 15px; font-family: monospace; }
+        .copy-btn { background: #28a745; margin-bottom: 10px; }
+        .whatsapp-btn { background: #25d366; }
+        .instructions { margin-top: 30px; padding: 20px; background: #e3f2fd; border-radius: 10px; border-left: 4px solid #2196f3; }
+        .loading { text-align: center; color: #666; padding: 20px; }
+        .driver-info { background: #e8f5e9; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #4caf50; }
+        .driver-info h4 { color: #2e7d32; margin-bottom: 10px; }
+        .driver-info p { margin: 5px 0; color: #555; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🚛 MEDLOG Driver Form Generator</h1>
-        <p class="subtitle">Generate unique pre-filled forms for each driver</p>
+        <h1>?? MEDLOG Driver Form Generator</h1>
+        <p class="subtitle">Select vendor and driver to generate unique form link</p>
         
-        <div class="form-group">
-            <label for="vendor">Select Vendor:</label>
-            <select id="vendor" onchange="updateDrivers()">
-                <option value="">-- Choose Vendor --</option>
-                <option value="jadeer">Jadeer</option>
-                <option value="al_shaks">Al Shaks</option>
-                <option value="al_turq">Al Turq</option>
-                <option value="dalel_aljawda">Dalel Aljawda</option>
-                <option value="modern_east">Modern East</option>
-                <option value="move_time">Move Time</option>
-                <option value="sadan">Sadan</option>
-                <option value="safe_genset">Safe Genset</option>
-                <option value="safe_journey">Safe Journey</option>
-            </select>
+        <div id="loading" class="loading">Loading driver data...</div>
+        
+        <div id="form-content" style="display: none;">
+            <div class="form-group">
+                <label for="vendor">Select Vendor:</label>
+                <select id="vendor" onchange="updateDrivers()">
+                    <option value="">-- Choose Vendor --</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="driver">Select Driver:</label>
+                <select id="driver" onchange="updateDriverInfo()" disabled>
+                    <option value="">-- Choose Driver --</option>
+                </select>
+            </div>
+            
+            <div id="driver-info" class="driver-info" style="display: none;">
+                <h4>?? Driver Information</h4>
+                <p><strong>Name (EN):</strong> <span id="driver-name-en"></span></p>
+                <p><strong>Name (AR):</strong> <span id="driver-name-ar"></span></p>
+                <p><strong>Truck (EN):</strong> <span id="truck-en"></span></p>
+                <p><strong>Truck (AR):</strong> <span id="truck-ar"></span></p>
+            </div>
+            
+            <div class="form-group">
+                <label for="container">Container Number (Optional):</label>
+                <input type="text" id="container" placeholder="e.g., SEGU 9472901">
+            </div>
+            
+            <button onclick="generateURL()">Generate Unique Driver Link</button>
         </div>
-        
-        <div class="form-group">
-            <label for="driver">Driver Name:</label>
-            <input type="text" id="driver" placeholder="Enter driver name (e.g., Ahmed Ali)">
-        </div>
-        
-        <div class="form-group">
-            <label for="truck">Truck Number:</label>
-            <input type="text" id="truck" placeholder="Enter truck number (e.g., 3765 أ ر ه)">
-        </div>
-        
-        <div class="form-group">
-            <label for="container">Container Number (Optional):</label>
-            <input type="text" id="container" placeholder="Enter container number (e.g., SEGU 9472901)">
-        </div>
-        
-        <button onclick="generateURL()">Generate Unique Driver Link</button>
         
         <div id="result" class="result">
-            <h3>✅ Driver Link Generated!</h3>
+            <h3>? Driver Link Generated!</h3>
             <div id="urlBox" class="url-box"></div>
-            <button class="copy-btn" onclick="copyURL()">📋 Copy Link</button>
-            <button class="whatsapp-btn" onclick="shareWhatsApp()">📱 Share on WhatsApp</button>
+            <button class="copy-btn" onclick="copyURL()">?? Copy Link</button>
+            <button class="whatsapp-btn" onclick="shareWhatsApp()">?? Share on WhatsApp</button>
         </div>
         
         <div class="instructions">
-            <h3>📋 How to Use:</h3>
+            <h3>?? How to Use:</h3>
             <ol>
-                <li>Select the vendor from the dropdown</li>
-                <li>Enter the driver's name</li>
-                <li>Enter the truck number</li>
-                <li>Click "Generate Unique Driver Link"</li>
-                <li>Copy the link and send it to the driver via WhatsApp</li>
-                <li>The driver will see a form with their info pre-filled!</li>
+                <li>Select the <strong>vendor</strong> from the dropdown</li>
+                <li>Select the <strong>driver</strong> from the list</li>
+                <li>Truck number will auto-fill based on driver</li>
+                <li>Optionally enter a container number</li>
+                <li>Click <strong>"Generate Unique Driver Link"</strong></li>
+                <li>Copy the link and send to driver via WhatsApp</li>
+                <li>Driver will see a form with their info pre-filled!</li>
             </ol>
         </div>
     </div>
 
     <script>
-        // Driver data by vendor (you can expand this)
-        const driverDatabase = {
-            jadeer: [
-                { name: "AHMAD NAWAZ KHAN", truck: "6433 TSA" },
-                { name: "BISHNU BAHADUR THING", truck: "2747 EDA" },
-                { name: "MAN BAHADUR GURUNG", truck: "4383 RXA" },
-                { name: "NABRAJ DHAMI", truck: "4403 RXA" },
-                { name: "RAJENDRA THAPA", truck: "2410 GSA" },
-                { name: "YOURAJ SURYABANSHI", truck: "4402 RXA" }
-            ]
+        let vendorData = {};
+        let currentDriver = null;
+        
+        window.onload = function() {
+            fetch('vendor_data.json')
+                .then(response => response.json())
+                .then(data => {
+                    vendorData = data;
+                    populateVendors();
+                    document.getElementById('loading').style.display = 'none';
+                    document.getElementById('form-content').style.display = 'block';
+                })
+                .catch(error => {
+                    console.error('Error loading vendor data:', error);
+                    document.getElementById('loading').innerHTML = 'Error loading data. Please refresh.';
+                });
         };
-
+        
+        function populateVendors() {
+            const vendorSelect = document.getElementById('vendor');
+            const vendors = Object.keys(vendorData).sort();
+            vendors.forEach(vendor => {
+                const option = document.createElement('option');
+                option.value = vendor;
+                option.textContent = vendor + ' (' + vendorData[vendor].length + ' drivers)';
+                vendorSelect.appendChild(option);
+            });
+        }
+        
         function updateDrivers() {
             const vendor = document.getElementById('vendor').value;
-            // You can add logic here to auto-populate driver suggestions
+            const driverSelect = document.getElementById('driver');
+            const driverInfo = document.getElementById('driver-info');
+            
+            driverSelect.innerHTML = '<option value="">-- Choose Driver --</option>';
+            driverSelect.disabled = !vendor;
+            driverInfo.style.display = 'none';
+            
+            if (vendor && vendorData[vendor]) {
+                const drivers = vendorData[vendor].sort((a, b) => a.driver_en.localeCompare(b.driver_en));
+                drivers.forEach((driver, index) => {
+                    const option = document.createElement('option');
+                    option.value = index;
+                    option.textContent = driver.driver_en;
+                    driverSelect.appendChild(option);
+                });
+            }
         }
-
+        
+        function updateDriverInfo() {
+            const vendor = document.getElementById('vendor').value;
+            const driverIndex = document.getElementById('driver').value;
+            const driverInfo = document.getElementById('driver-info');
+            
+            if (vendor && driverIndex !== '' && vendorData[vendor]) {
+                currentDriver = vendorData[vendor][driverIndex];
+                document.getElementById('driver-name-en').textContent = currentDriver.driver_en;
+                document.getElementById('driver-name-ar').textContent = currentDriver.driver_ar || 'N/A';
+                document.getElementById('truck-en').textContent = currentDriver.truck_en || 'N/A';
+                document.getElementById('truck-ar').textContent = currentDriver.truck_ar || 'N/A';
+                driverInfo.style.display = 'block';
+            } else {
+                driverInfo.style.display = 'none';
+                currentDriver = null;
+            }
+        }
+        
         function generateURL() {
             const vendor = document.getElementById('vendor').value;
-            const driver = document.getElementById('driver').value.trim();
-            const truck = document.getElementById('truck').value.trim();
             const container = document.getElementById('container').value.trim();
             
-            if (!vendor || !driver || !truck) {
-                alert('Please fill in all required fields!');
+            if (!vendor || !currentDriver) {
+                alert('Please select a vendor and driver!');
                 return;
             }
             
-            // Generate unique URL with parameters
-            const baseURL = `https://afnankhan70777-hub.github.io/medlog-driver-forms/${vendor}.html`;
+            const vendorFormMap = {
+                'Jadeer': 'jadeer', 'Al Shaks ': 'al_shaks', 'Al turq (Abu Abdullah)': 'al_turq',
+                'Dalel Aljawda': 'dalel_aljawda', 'Modern East': 'modern_east', 'Move Time ': 'move_time',
+                'Sadan': 'sadan', 'Safe GeNSET': 'safe_genset', 'Safe Journey': 'safe_journey',
+                'Khutut Al Ajyal Transport': 'khutut_alajyal'
+            };
+            
+            const formName = vendorFormMap[vendor] || 'index';
+            const baseURL = `https://afnankhan70777-hub.github.io/medlog-driver-forms/${formName}.html`;
+            
             const params = new URLSearchParams();
-            params.append('driver', driver);
-            params.append('truck', truck);
-            if (container) {
-                params.append('container', container);
-            }
+            params.append('driver', currentDriver.driver_en);
+            params.append('truck', currentDriver.truck_en || '');
+            if (currentDriver.driver_ar) params.append('driver_ar', currentDriver.driver_ar);
+            if (currentDriver.truck_ar) params.append('truck_ar', currentDriver.truck_ar);
+            if (container) params.append('container', container);
             
             const fullURL = `${baseURL}?${params.toString()}`;
-            
-            // Display result
             document.getElementById('urlBox').textContent = fullURL;
             document.getElementById('result').classList.add('show');
+            document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
         }
-
+        
         function copyURL() {
             const url = document.getElementById('urlBox').textContent;
-            navigator.clipboard.writeText(url).then(() => {
-                alert('Link copied to clipboard!');
-            });
+            navigator.clipboard.writeText(url).then(() => alert('Link copied!'));
         }
-
+        
         function shareWhatsApp() {
             const url = document.getElementById('urlBox').textContent;
-            const driver = document.getElementById('driver').value.trim();
-            const message = `Hi ${driver},\n\nPlease update your trip status using this link:\n${url}\n\nThank you!`;
-            const whatsappURL = `https://wa.me/?text=${encodeURIComponent(message)}`;
-            window.open(whatsappURL, '_blank');
+            const message = `Hi ${currentDriver.driver_en},\n\nPlease update your trip status:\n${url}`;
+            window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, '_blank');
         }
     </script>
 </body>
