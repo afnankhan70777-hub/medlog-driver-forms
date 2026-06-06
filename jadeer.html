@@ -76,45 +76,54 @@
             </div>
             
             <div class="form-group">
-                <label style="font-size: 16px;">📦 Container Number / کنٹینر نمبر <span style="color: red;">*</span></label>
-                <input type="text" id="container" name="container" placeholder="MEDU 1234567" required 
-                       style="font-size: 18px; text-align: center; letter-spacing: 2px;">
-                <p style="font-size: 13px; color: #666; margin-top: 5px;">Container number likhein / کنٹینر نمبر لکھیں</p>
-            </div>
-            
-            <div class="form-group">
-                <label style="font-size: 16px;">📍 Kahan Hain? / کہاں ہیں؟ <span style="color: red;">*</span></label>
-                <div class="status-grid">
+                <label style="font-size: 16px;">� Current Status / موجودہ حالت <span style="color: red;">*</span></label>
+                <div class="status-grid" style="grid-template-columns: 1fr 1fr;">
                     <div class="status-option">
-                        <input type="radio" name="status" id="reached" value="Reached" required>
-                        <label for="reached" style="font-size: 14px;">
-                            <span style="font-size: 24px; display: block; margin-bottom: 5px;">📍</span>
-                            <strong>Reached</strong><br>
-                            <span style="font-size: 12px; opacity: 0.8;">پہنچ گئے</span>
+                        <input type="radio" name="status" id="loaded_inside" value="Loaded and Inside" required>
+                        <label for="loaded_inside" style="font-size: 13px; padding: 12px 8px;">
+                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">📦</span>
+                            <strong>Loaded & Inside</strong><br>
+                            <span style="font-size: 11px; opacity: 0.8;">لوڈ شدہ - اندر</span>
                         </label>
                     </div>
                     <div class="status-option">
-                        <input type="radio" name="status" id="loading" value="Loading">
-                        <label for="loading" style="font-size: 14px;">
-                            <span style="font-size: 24px; display: block; margin-bottom: 5px;">📦</span>
-                            <strong>Loading</strong><br>
-                            <span style="font-size: 12px; opacity: 0.8;">لوڈنگ ہو رہی</span>
+                        <input type="radio" name="status" id="loaded_outside" value="Loaded and Outside">
+                        <label for="loaded_outside" style="font-size: 13px; padding: 12px 8px;">
+                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">🚛</span>
+                            <strong>Loaded & Outside</strong><br>
+                            <span style="font-size: 11px; opacity: 0.8;">لوڈ شدہ - باہر</span>
                         </label>
                     </div>
                     <div class="status-option">
-                        <input type="radio" name="status" id="unloaded" value="Unloaded">
-                        <label for="unloaded" style="font-size: 14px;">
-                            <span style="font-size: 24px; display: block; margin-bottom: 5px;">✅</span>
-                            <strong>Unloaded</strong><br>
-                            <span style="font-size: 12px; opacity: 0.8;">خالی ہو گیا</span>
+                        <input type="radio" name="status" id="unloaded_inside" value="Unloaded and Inside">
+                        <label for="unloaded_inside" style="font-size: 13px; padding: 12px 8px;">
+                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">✅</span>
+                            <strong>Unloaded & Inside</strong><br>
+                            <span style="font-size: 11px; opacity: 0.8;">خالی - اندر</span>
                         </label>
                     </div>
                     <div class="status-option">
-                        <input type="radio" name="status" id="left" value="Left">
-                        <label for="left" style="font-size: 14px;">
-                            <span style="font-size: 24px; display: block; margin-bottom: 5px;">🚪</span>
-                            <strong>Left</strong><br>
-                            <span style="font-size: 12px; opacity: 0.8;">چلے گئے</span>
+                        <input type="radio" name="status" id="unloaded_outside" value="Unloaded and Outside">
+                        <label for="unloaded_outside" style="font-size: 13px; padding: 12px 8px;">
+                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">🚪</span>
+                            <strong>Unloaded & Outside</strong><br>
+                            <span style="font-size: 11px; opacity: 0.8;">خالی - باہر</span>
+                        </label>
+                    </div>
+                    <div class="status-option">
+                        <input type="radio" name="status" id="nearby_loading" value="Nearby Loading Area">
+                        <label for="nearby_loading" style="font-size: 13px; padding: 12px 8px;">
+                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">⏳</span>
+                            <strong>Nearby Loading</strong><br>
+                            <span style="font-size: 11px; opacity: 0.8;">لوڈنگ کے قریب</span>
+                        </label>
+                    </div>
+                    <div class="status-option">
+                        <input type="radio" name="status" id="nearby_unloading" value="Nearby Unloading Area">
+                        <label for="nearby_unloading" style="font-size: 13px; padding: 12px 8px;">
+                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">🕐</span>
+                            <strong>Nearby Unloading</strong><br>
+                            <span style="font-size: 11px; opacity: 0.8;">ان لوڈنگ کے قریب</span>
                         </label>
                     </div>
                 </div>

@@ -75,12 +75,7 @@
                 <input type="text" id="truck" name="truck" style="background: transparent; border: none; font-size: 18px; font-weight: bold; color: #e65100; padding: 5px 0;" required>
             </div>
             
-            <div class="form-group">
-                <label style="font-size: 16px;">📦 Container Number / کنٹینر نمبر <span style="color: red;">*</span></label>
-                <input type="text" id="container" name="container" placeholder="MEDU 1234567" required 
-                       style="font-size: 18px; text-align: center; letter-spacing: 2px;">
-                <p style="font-size: 13px; color: #666; margin-top: 5px;">Container number likhein / کنٹینر نمبر لکھیں</p>
-            </div>
+            
             
             <div class="form-group">
                 <label style="font-size: 16px;">📍 Kahan Hain? / کہاں ہیں؟ <span style="color: red;">*</span></label>
@@ -212,9 +207,7 @@
             }
             
             // Pre-fill container
-            if (params.container) {
-                document.getElementById('container').value = params.container;
-            }
+            
             
             // Show driver info banner
             if (params.driver) {

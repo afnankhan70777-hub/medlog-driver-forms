@@ -90,11 +90,6 @@
                 <p><strong>Truck (AR):</strong> <span id="truck-ar"></span></p>
             </div>
             
-            <div class="form-group">
-                <label for="container">Container Number (Optional):</label>
-                <input type="text" id="container" placeholder="e.g., SEGU 9472901">
-            </div>
-            
             <button onclick="generateURL()">Generate Unique Driver Link</button>
         </div>
         
@@ -111,7 +106,6 @@
                 <li>Select the <strong>vendor</strong> from the dropdown</li>
                 <li>Select the <strong>driver</strong> from the list</li>
                 <li>Select the <strong>truck</strong> from the dropdown</li>
-                <li>Optionally enter a container number</li>
                 <li>Click <strong>"Generate Unique Driver Link"</strong></li>
                 <li>Copy the link and send to driver via WhatsApp</li>
                 <li>Driver will see a form with their info pre-filled!</li>
@@ -232,7 +226,6 @@
         
         function generateURL() {
             const vendor = document.getElementById('vendor').value;
-            const container = document.getElementById('container').value.trim();
             
             if (!vendor || !currentDriver) {
                 alert('Please select a vendor and driver!');
@@ -260,7 +253,6 @@
             params.append('truck', currentDriver.truck_en || '');
             if (currentDriver.driver_ar) params.append('driver_ar', currentDriver.driver_ar);
             if (currentDriver.truck_ar) params.append('truck_ar', currentDriver.truck_ar);
-            if (container) params.append('container', container);
             
             const fullURL = `${baseURL}?${params.toString()}`;
             document.getElementById('urlBox').textContent = fullURL;
