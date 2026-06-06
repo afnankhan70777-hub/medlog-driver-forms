@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jadeer - Photo Status Form</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 { text-align: center; color: #333; margin-bottom: 10px; font-size: 24px; }
+        .subtitle { text-align: center; color: #666; font-size: 14px; margin-bottom: 30px; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; color: #333; font-weight: 600; font-size: 14px; }
+        select, input[type="text"], textarea {
+            width: 100%; padding: 15px; border: 2px solid #e0e0e0;
+            border-radius: 10px; font-size: 16px;
+        }
+        select:focus, input:focus { outline: none; border-color: #667eea; }
+        
+        /* Photo-based status grid */
+        .photo-status-grid {
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 15px;
+        }
+        .photo-status-option { 
+            position: relative; 
+        }
+        .photo-status-option input { 
+            position: absolute; 
+            opacity: 0; 
+        }
+        .photo-status-option label {
+            display: block; 
+            background: #f5f5f5;
+            border-radius: 15px; 
+            text-align: center; 
+            cursor: pointer;
+            margin: 0; 
+            padding: 10px;
+            border: 3px solid transparent;
+            transition: all 0.3s;
+        }
+        .photo-status-option label img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 8px;
+        }
+        .photo-status-option input:checked + label {
+            border-color: #667eea;
+            background: #e3f2fd;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        .photo-status-option input:checked + label::after {
+            content: "✓";
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .photo-status-option .status-text {
+            font-size: 12px;
+            font-weight: 600;
+            color: #333;
+            margin-top: 5px;
+        }
+        
+        .section-header {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .empty-header {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+        .filled-header {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+        
+        .submit-btn {
+            width: 100%; padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white; border: none; border-radius: 15px;
+            font-size: 20px; font-weight: 600; cursor: pointer;
+            margin-top: 20px;
+        }
+        .success {
+            display: none; background: #4caf50; color: white;
+            padding: 30px; border-radius: 15px; text-align: center; margin-top: 20px;
+        }
+        
+        /* Placeholder for actual photos */
+        .photo-placeholder {
+            background: linear-gradient(135deg, #ddd 0%, #bbb 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 14px;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚛 Jadeer</h1>
+        <p class="subtitle" style="font-size: 16px; color: #555;">📸 Photo Status Update / تصویری اپڈیٹ</p>
+        
+        <form action="https://formspree.io/f/FORMSPREE_ID" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="_subject" value="Jadeer Photo Status Update">
+            <input type="hidden" name="vendor" value="Jadeer">
+            
+            <!-- Driver Info -->
+            <div class="form-group" style="background: #e8f5e9; padding: 15px; border-radius: 10px; border-right: 4px solid #4caf50;">
+                <label style="color: #2e7d32; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">👤 Driver / ڈرائیور</label>
+                <input type="text" id="driver" name="driver" style="background: transparent; border: none; font-size: 18px; font-weight: bold; color: #1b5e20; padding: 5px 0;" required>
+            </div>
+            
+            <div class="form-group" style="background: #fff3e0; padding: 15px; border-radius: 10px; border-right: 4px solid #ff9800;">
+                <label style="color: #e65100; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">🚛 Truck Number / ٹرک نمبر</label>
+                <input type="text" id="truck" name="truck" style="background: transparent; border: none; font-size: 18px; font-weight: bold; color: #e65100; padding: 5px 0;" required>
+            </div>
+            
+            <!-- Empty Container Section with Photos -->
+            <div class="form-group">
+                <div class="section-header empty-header">
+                    🔄 Empty Container / خالی کنٹینر
+                </div>
+                <div class="photo-status-grid">
+                    <!-- Waiting Nearby Loading -->
+                    <div class="photo-status-option">
+                        <input type="radio" name="status" id="waiting_loading" value="Waiting Nearby Loading Area">
+                        <label for="waiting_loading">
+                            <div class="photo-placeholder" style="height: 120px; border-radius: 10px;">
+                                📸<br>Waiting at Loading<br>لوڈنگ کے قریب انتظار
+                            </div>
+                            <div class="status-text">⏳ Waiting Nearby Loading</div>
+                        </label>
+                    </div>
+                    
+                    <!-- Waiting Nearby Unloading -->
+                    <div class="photo-status-option">
+                        <input type="radio" name="status" id="waiting_unloading" value="Waiting Nearby Unloading Area">
+                        <label for="waiting_unloading">
+                            <div class="photo-placeholder" style="height: 120px; border-radius: 10px;">
+                                📸<br>Waiting at Unloading<br>ان لوڈنگ کے قریب انتظار
+                            </div>
+                            <div class="status-text">🕐 Waiting Nearby Unloading</div>
+                        </label>
+                    </div>
+                    
+                    <!-- Unloaded but Inside -->
+                    <div class="photo-status-option">
+                        <input type="radio" name="status" id="unloaded_inside" value="Unloaded but Inside">
+                        <label for="unloaded_inside">
+                            <div class="photo-placeholder" style="height: 120px; border-radius: 10px;">
+                                📸<br>Empty - Inside<br>خالی - اندر
+                            </div>
+                            <div class="status-text">✅ Unloaded but Inside</div>
+                        </label>
+                    </div>
+                    
+                    <!-- Empty and Left -->
+                    <div class="photo-status-option">
+                        <input type="radio" name="status" id="empty_left" value="Empty and Left">
+                        <label for="empty_left">
+                            <div class="photo-placeholder" style="height: 120px; border-radius: 10px;">
+                                📸<br>Empty - Left<br>خالی - چلے گئے
+                            </div>
+                            <div class="status-text">🚗 Empty and Left</div>
+                        </label>
+                    </div>
+                    
+                    <!-- Empty Returning -->
+                    <div class="photo-status-option">
+                        <input type="radio" name="status" id="empty_returning" value="Empty - Returning">
+                        <label for="empty_returning">
+                            <div class="photo-placeholder" style="height: 120px; border-radius: 10px;">
+                                📸<br>Empty - Returning<br>خالی - واپس
+                            </div>
+                            <div class="status-text">🛣️ Empty - Returning</div>
+                        </label>
+                    </div>
+                    
+                    <!-- Loaded but Inside -->
+                    <div class="photo-status-option">
+                        <input type="radio" name="status" id="loaded_inside_empty" value="Loaded but Inside">
+                        <label for="loaded_inside_empty">
+                            <div class="photo-placeholder" style="height: 120px; border-radius: 10px;">
+                                📸<br>Loaded - Inside<br>لوڈ شدہ - اندر
+                            </div>
+                            <div class="status-text">📦 Loaded but Inside</div>
+                        </label>
+                    </div>
+                    
+                    <!-- Loaded and Left -->
+                    <div class="photo-status-option">
+                        <input type="radio" name="status" id="loaded_left" value="Loaded and Left">
+                        <label for="loaded_left">
+                            <div class="photo-placeholder" style="height: 120px; border-radius: 10px;">
+                                📸<br>Loaded - Left<br>لوڈ شدہ - چلے گئے
+                            </div>
+                            <div class="status-text">🚚 Loaded and Left</div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Filled Container Section with Photos -->
+            <div class="form-group">
+                <div class="section-header filled-header">
+                    📦 Filled Container / بھرا ہوا کنٹینر
+                </div>
+                <div class="photo-status-grid">
+                    <!-- Waiting Nearby Emptying -->
+                    <div class="photo-status-option">
+                        <input type="radio" name="status" id="waiting_emptying" value="Waiting Nearby Emptying Container Area">
+                        <label for="waiting_emptying">
+                            <div class="photo-placeholder" style="height: 120px; border-radius: 10px;">
+                                📸<br>Waiting to Empty<br>خالی کرنے کے قریب انتظار
+                            </div>
+                            <div class="status-text">⏳ Waiting Nearby Emptying</div>
+                        </label>
+                    </div>
+                    
+                    <!-- Waiting Nearby Loading -->
+                    <div class="photo-status-option">
+                        <input type="radio" name="status" id="waiting_loading_filled" value="Waiting Nearby Loading Area">
+                        <label for="waiting_loading_filled">
+                            <div class="photo-placeholder" style="height: 120px; border-radius: 10px;">
+                                📸<br>Waiting at Loading<br>لوڈنگ کے قریب انتظار
+                            </div>
+                            <div class="status-text">🕐 Waiting Nearby Loading</div>
+                        </label>
+                    </div>
+                    
+                    <!-- Loaded and Inside -->
+                    <div class="photo-status-option">
+                        <input type="radio" name="status" id="loaded_inside" value="Loaded and Inside">
+                        <label for="loaded_inside">
+                            <div class="photo-placeholder" style="height: 120px; border-radius: 10px;">
+                                📸<br>Loaded - Inside<br>لوڈ شدہ - اندر
+                            </div>
+                            <div class="status-text">📦 Loaded and Inside</div>
+                        </label>
+                    </div>
+                    
+                    <!-- Loaded and Outside -->
+                    <div class="photo-status-option">
+                        <input type="radio" name="status" id="loaded_outside" value="Loaded and Outside">
+                        <label for="loaded_outside">
+                            <div class="photo-placeholder" style="height: 120px; border-radius: 10px;">
+                                📸<br>Loaded - Outside<br>لوڈ شدہ - باہر
+                            </div>
+                            <div class="status-text">🚛 Loaded and Outside</div>
+                        </label>
+                    </div>
+                    
+                    <!-- Empty and Left -->
+                    <div class="photo-status-option">
+                        <input type="radio" name="status" id="empty_left_filled" value="Empty and Left">
+                        <label for="empty_left_filled">
+                            <div class="photo-placeholder" style="height: 120px; border-radius: 10px;">
+                                📸<br>Empty - Left<br>خالی - چلے گئے
+                            </div>
+                            <div class="status-text">🚗 Empty and Left</div>
+                        </label>
+                    </div>
+                    
+                    <!-- Empty Returning -->
+                    <div class="photo-status-option">
+                        <input type="radio" name="status" id="empty_returning_filled" value="Empty - Returning">
+                        <label for="empty_returning_filled">
+                            <div class="photo-placeholder" style="height: 120px; border-radius: 10px;">
+                                📸<br>Empty - Returning<br>خالی - واپس
+                            </div>
+                            <div class="status-text">🛣️ Empty - Returning</div>
+                        </label>
+                    </div>
+                    
+                    <!-- Waiting Nearby Returning Empty -->
+                    <div class="photo-status-option">
+                        <input type="radio" name="status" id="waiting_returning" value="Waiting Nearby Returning Empty Container Area">
+                        <label for="waiting_returning">
+                            <div class="photo-placeholder" style="height: 120px; border-radius: 10px;">
+                                📸<br>Waiting for Empty Return<br>خالی واپسی کے قریب
+                            </div>
+                            <div class="status-text">🔄 Waiting Nearby Returning</div>
+                        </label>
+                    </div>
+                    
+                    <!-- Empty Offloaded Inside -->
+                    <div class="photo-status-option">
+                        <input type="radio" name="status" id="offloaded_inside" value="Empty Container Offloaded but Inside">
+                        <label for="offloaded_inside">
+                            <div class="photo-placeholder" style="height: 120px; border-radius: 10px;">
+                                📸<br>Offloaded - Inside<br>خالی اتارا - اندر
+                            </div>
+                            <div class="status-text">📍 Empty Offloaded Inside</div>
+                        </label>
+                    </div>
+                    
+                    <!-- Empty Offloaded Outside -->
+                    <div class="photo-status-option">
+                        <input type="radio" name="status" id="offloaded_outside" value="Empty Container Offloaded and Outside">
+                        <label for="offloaded_outside">
+                            <div class="photo-placeholder" style="height: 120px; border-radius: 10px;">
+                                📸<br>Offloaded - Outside<br>خالی اتارا - باہر
+                            </div>
+                            <div class="status-text">🚪 Empty Offloaded Outside</div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Photo Upload -->
+            <div class="form-group">
+                <label style="font-size: 18px; text-align: center; display: block; margin-bottom: 15px;">📸 Your Truck Photo / آپ کے ٹرک کی تصویر</label>
+                <div style="border: 4px dashed #667eea; border-radius: 20px; padding: 40px; text-align: center; background: #f8f9ff;">
+                    <input type="file" name="photo" accept="image/*" capture="camera" required 
+                           style="display: none;" id="photo-input">
+                    <label for="photo-input" style="cursor: pointer; margin: 0;">
+                        <div style="font-size: 64px; margin-bottom: 15px;">📷</div>
+                        <div style="font-size: 20px; color: #333; font-weight: bold;">Tap Here to Take Photo</div>
+                        <div style="font-size: 16px; color: #666; margin-top: 10px;">یہاں دبائیں تصویر لینے کے لیے</div>
+                    </label>
+                </div>
+                <p style="font-size: 14px; color: #666; margin-top: 15px; text-align: center;">
+                    📋 Container number must be visible / کنٹینر نمبر واضح نظر آنا چاہیے
+                </p>
+            </div>
+            
+            <button type="submit" class="submit-btn">
+                ✅ Send / بھیجیں
+            </button>
+            
+            <p style="text-align: center; margin-top: 15px; font-size: 13px; color: #888;">
+                🔒 Your information is safe / آپ کی معلومات محفوظ ہے
+            </p>
+        </form>
+        
+        <div id="success" class="success">
+            <div style="font-size: 64px; margin-bottom: 15px;">🎉</div>
+            <h2 style="margin-bottom: 10px;">Thank You! / شکریہ!</h2>
+            <p style="font-size: 18px;">Your update has been sent.</p>
+            <p style="font-size: 18px;">آپ کی معلومات بھیج دی گئی ہے۔</p>
+        </div>
+    </div>
+    
+    <script>
+        document.querySelector('form').addEventListener('submit', function() {
+            document.getElementById('success').style.display = 'block';
+            this.style.display = 'none';
+        });
+        
+        // Auto-fill driver and truck from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const driver = urlParams.get('driver');
+        const truck = urlParams.get('truck');
+        
+        if (driver) {
+            document.getElementById('driver').value = driver;
+        }
+        if (truck) {
+            document.getElementById('truck').value = truck;
+        }
+        
+        // Force reload if page is loaded from cache
+        if (performance.navigation.type === 2) {
+            location.reload(true);
+        }
+    </script>
+</body>
+</html>
