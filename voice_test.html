@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Test</title>
+    <style>
+        body { font-family: Arial; padding: 20px; max-width: 500px; margin: 0 auto; }
+        button { padding: 15px 30px; font-size: 18px; margin: 10px; cursor: pointer; }
+        #debug { background: #f0f0f0; padding: 10px; margin: 10px 0; font-family: monospace; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <h1>🔊 Voice Test</h1>
+    
+    <button onclick="testVoice()">Test Voice (English)</button>
+    <button onclick="testUrdu()">Test Voice (Urdu)</button>
+    <button onclick="testHindi()">Test Voice (Hindi)</button>
+    <button onclick="checkVoices()">Check Available Voices</button>
+    
+    <div id="debug">Debug info will appear here...</div>
+
+    <script>
+        const debug = document.getElementById('debug');
+        
+        function log(msg) {
+            debug.innerHTML += msg + '<br>';
+            console.log(msg);
+        }
+        
+        // Check if speech synthesis is supported
+        if ('speechSynthesis' in window) {
+            log('✅ Speech Synthesis IS supported');
+        } else {
+            log('❌ Speech Synthesis NOT supported');
+        }
+        
+        function testVoice() {
+            log('Testing English voice...');
+            const utterance = new SpeechSynthesisUtterance('Hello, this is a test');
+            utterance.lang = 'en-US';
+            utterance.onstart = () => log('🟢 Speech started');
+            utterance.onend = () => log('✅ Speech ended');
+            utterance.onerror = (e) => log('❌ Error: ' + e.error);
+            window.speechSynthesis.speak(utterance);
+        }
+        
+        function testUrdu() {
+            log('Testing Urdu voice...');
+            const utterance = new SpeechSynthesisUtterance('لوڈنگ کے قریب انتظار کر رہے ہیں');
+            utterance.lang = 'ur-PK';
+            utterance.onstart = () => log('🟢 Urdu Speech started');
+            utterance.onend = () => log('✅ Urdu Speech ended');
+            utterance.onerror = (e) => log('❌ Urdu Error: ' + e.error);
+            window.speechSynthesis.speak(utterance);
+        }
+        
+        function testHindi() {
+            log('Testing Hindi voice...');
+            const utterance = new SpeechSynthesisUtterance('लोडिंग के करीब इंतजार कर रहे हैं');
+            utterance.lang = 'hi-IN';
+            utterance.onstart = () => log('🟢 Hindi Speech started');
+            utterance.onend = () => log('✅ Hindi Speech ended');
+            utterance.onerror = (e) => log('❌ Hindi Error: ' + e.error);
+            window.speechSynthesis.speak(utterance);
+        }
+        
+        function checkVoices() {
+            const voices = window.speechSynthesis.getVoices();
+            log('Available voices: ' + voices.length);
+            voices.forEach((voice, i) => {
+                log(i + ': ' + voice.name + ' (' + voice.lang + ')');
+            });
+        }
+        
+        // Load voices
+        window.speechSynthesis.onvoiceschanged = () => {
+            log('Voices loaded!');
+            checkVoices();
+        };
+        
+        // Try to load immediately
+        setTimeout(checkVoices, 1000);
+    </script>
+</body>
+</html>
