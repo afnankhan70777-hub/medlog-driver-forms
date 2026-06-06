@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jadeer - Trip Status Form (Voice Enabled)</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 { text-align: center; color: #333; margin-bottom: 10px; font-size: 24px; }
+        .subtitle { text-align: center; color: #666; font-size: 14px; margin-bottom: 30px; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; color: #333; font-weight: 600; font-size: 14px; }
+        select, input[type="text"], textarea {
+            width: 100%; padding: 15px; border: 2px solid #e0e0e0;
+            border-radius: 10px; font-size: 16px;
+        }
+        select:focus, input:focus { outline: none; border-color: #667eea; }
+        .status-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+        }
+        .status-option { 
+            position: relative; 
+            background: #f5f5f5;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .status-option input { 
+            position: absolute; 
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        .status-option input:checked + .status-content {
+            background: #667eea; 
+            color: white; 
+            font-weight: 600;
+        }
+        .status-content {
+            display: block;
+            padding: 10px;
+        }
+        .voice-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: none;
+            background: #ff9800;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .voice-btn:hover {
+            background: #f57c00;
+            transform: scale(1.1);
+        }
+        .voice-btn:active {
+            transform: scale(0.95);
+        }
+        .submit-btn {
+            width: 100%; padding: 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white; border: none; border-radius: 10px;
+            font-size: 18px; font-weight: 600; cursor: pointer;
+        }
+        .success {
+            display: none; background: #4caf50; color: white;
+            padding: 20px; border-radius: 10px; text-align: center; margin-top: 20px;
+        }
+        .test-voice-btn {
+            background: #ff5722;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 15px;
+            display: block;
+            width: 100%;
+        }
+        .test-voice-btn:hover {
+            background: #e64a19;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚛 Jadeer</h1>
+        <p class="subtitle" style="font-size: 16px; color: #555;">Trip Update / سفر کی تازہ ترین معلومات</p>
+        
+        <form action="https://formspree.io/f/FORMSPREE_ID" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="_subject" value="Jadeer Status Update">
+            <input type="hidden" name="vendor" value="Jadeer">
+            
+            <!-- Driver Info -->
+            <div class="form-group" style="background: #e8f5e9; padding: 15px; border-radius: 10px; border-right: 4px solid #4caf50;">
+                <label style="color: #2e7d32; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Driver / ڈرائیور</label>
+                <input type="text" id="driver" name="driver" style="background: transparent; border: none; font-size: 18px; font-weight: bold; color: #1b5e20; padding: 5px 0;" required>
+            </div>
+            
+            <div class="form-group" style="background: #fff3e0; padding: 15px; border-radius: 10px; border-right: 4px solid #ff9800;">
+                <label style="color: #e65100; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Truck Number / ٹرک نمبر</label>
+                <input type="text" id="truck" name="truck" style="background: transparent; border: none; font-size: 18px; font-weight: bold; color: #e65100; padding: 5px 0;" required>
+            </div>
+            
+            <!-- Test Voice Button -->
+            <button type="button" class="test-voice-btn" onclick="testVoice()">
+                🔊 Test Voice / آواز چیک کریں
+            </button>
+            
+            <!-- Empty Container Section -->
+            <div class="form-group">
+                <label style="font-size: 16px; background: #e8f5e9; padding: 10px; border-radius: 8px; display: block; margin-bottom: 15px; text-align: center;">
+                    🔄 Empty Container / خالی کنٹینر
+                </label>
+                <div class="status-grid">
+                    <div class="status-option">
+                        <button type="button" class="voice-btn" onclick="playVoice('لوڈنگ کے قریب انتظار کر رہے ہیں')">🔊</button>
+                        <input type="radio" name="status" id="waiting_loading_empty" value="Waiting Nearby Loading Area">
+                        <div class="status-content">
+                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">⏳</span>
+                            <strong>Waiting Nearby Loading</strong><br>
+                            <strong style="font-size: 12px; color: #333;">لوڈنگ کے قریب انتظار</strong>
+                        </div>
+                    </div>
+                    
+                    <div class="status-option">
+                        <button type="button" class="voice-btn" onclick="playVoice('ان لوڈنگ کے قریب انتظار کر رہے ہیں')">🔊</button>
+                        <input type="radio" name="status" id="waiting_unloading" value="Waiting Nearby Unloading Area">
+                        <div class="status-content">
+                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">🕐</span>
+                            <strong>Waiting Nearby Unloading</strong><br>
+                            <strong style="font-size: 12px; color: #333;">ان لوڈنگ کے قریب انتظار</strong>
+                        </div>
+                    </div>
+                    
+                    <div class="status-option">
+                        <button type="button" class="voice-btn" onclick="playVoice('خالی ہوا، اندر ہے')">🔊</button>
+                        <input type="radio" name="status" id="unloaded_inside" value="Unloaded but Inside">
+                        <div class="status-content">
+                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">✅</span>
+                            <strong>Unloaded but Inside</strong><br>
+                            <strong style="font-size: 12px; color: #333;">خالی ہوا - اندر</strong>
+                        </div>
+                    </div>
+                    
+                    <div class="status-option">
+                        <button type="button" class="voice-btn" onclick="playVoice('خالی ہے، چلے گئے')">🔊</button>
+                        <input type="radio" name="status" id="empty_left" value="Empty and Left">
+                        <div class="status-content">
+                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">🚗</span>
+                            <strong>Empty and Left</strong><br>
+                            <strong style="font-size: 12px; color: #333;">خالی - چلے گئے</strong>
+                        </div>
+                    </div>
+                    
+                    <div class="status-option">
+                        <button type="button" class="voice-btn" onclick="playVoice('خالی ہے، واپس جا رہے ہیں')">🔊</button>
+                        <input type="radio" name="status" id="empty_returning" value="Empty - Returning">
+                        <div class="status-content">
+                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">🛣️</span>
+                            <strong>Empty - Returning</strong><br>
+                            <strong style="font-size: 12px; color: #333;">خالی - واپس</strong>
+                        </div>
+                    </div>
+                    
+                    <div class="status-option">
+                        <button type="button" class="voice-btn" onclick="playVoice('لوڈ شدہ، اندر ہے')">🔊</button>
+                        <input type="radio" name="status" id="loaded_but_inside" value="Loaded but Inside">
+                        <div class="status-content">
+                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">📦</span>
+                            <strong>Loaded but Inside</strong><br>
+                            <strong style="font-size: 12px; color: #333;">لوڈ شدہ - اندر</strong>
+                        </div>
+                    </div>
+                    
+                    <div class="status-option">
+                        <button type="button" class="voice-btn" onclick="playVoice('لوڈ شدہ، چلے گئے')">🔊</button>
+                        <input type="radio" name="status" id="loaded_and_left" value="Loaded and Left">
+                        <div class="status-content">
+                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">🚚</span>
+                            <strong>Loaded and Left</strong><br>
+                            <strong style="font-size: 12px; color: #333;">لوڈ شدہ - چلے گئے</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Filled Container Section -->
+            <div class="form-group">
+                <label style="font-size: 16px; background: #e3f2fd; padding: 10px; border-radius: 8px; display: block; margin-bottom: 15px; text-align: center;">
+                    📦 Filled Container / بھرا ہوا کنٹینر
+                </label>
+                <div class="status-grid">
+                    <div class="status-option">
+                        <button type="button" class="voice-btn" onclick="playVoice('خالی کرنے کے قریب انتظار کر رہے ہیں')">🔊</button>
+                        <input type="radio" name="status" id="waiting_emptying" value="Waiting Nearby Emptying Container Area">
+                        <div class="status-content">
+                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">⏳</span>
+                            <strong>Waiting Nearby Emptying</strong><br>
+                            <strong style="font-size: 12px; color: #333;">خالی کرنے کے قریب انتظار</strong>
+                        </div>
+                    </div>
+                    
+                    <div class="status-option">
+                        <button type="button" class="voice-btn" onclick="playVoice('لوڈنگ کے قریب انتظار کر رہے ہیں')">🔊</button>
+                        <input type="radio" name="status" id="waiting_loading_filled" value="Waiting Nearby Loading Area">
+                        <div class="status-content">
+                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">🕐</span>
+                            <strong>Waiting Nearby Loading</strong><br>
+                            <strong style="font-size: 12px; color: #333;">لوڈنگ کے قریب انتظار</strong>
+                        </div>
+                    </div>
+                    
+                    <div class="status-option">
+                        <button type="button" class="voice-btn" onclick="playVoice('لوڈ شدہ، اندر ہے')">🔊</button>
+                        <input type="radio" name="status" id="loaded_inside" value="Loaded and Inside">
+                        <div class="status-content">
+                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">📦</span>
+                            <strong>Loaded and Inside</strong><br>
+                            <strong style="font-size: 12px; color: #333;">لوڈ شدہ - اندر</strong>
+                        </div>
+                    </div>
+                    
+                    <div class="status-option">
+                        <button type="button" class="voice-btn" onclick="playVoice('لوڈ شدہ، باہر ہے')">🔊</button>
+                        <input type="radio" name="status" id="loaded_outside" value="Loaded and Outside">
+                        <div class="status-content">
+                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">🚛</span>
+                            <strong>Loaded and Outside</strong><br>
+                            <strong style="font-size: 12px; color: #333;">لوڈ شدہ - باہر</strong>
+                        </div>
+                    </div>
+                    
+                    <div class="status-option">
+                        <button type="button" class="voice-btn" onclick="playVoice('خالی ہے، چلے گئے')">🔊</button>
+                        <input type="radio" name="status" id="empty_left_filled" value="Empty and Left">
+                        <div class="status-content">
+                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">🚗</span>
+                            <strong>Empty and Left</strong><br>
+                            <strong style="font-size: 12px; color: #333;">خالی - چلے گئے</strong>
+                        </div>
+                    </div>
+                    
+                    <div class="status-option">
+                        <button type="button" class="voice-btn" onclick="playVoice('خالی ہے، واپس جا رہے ہیں')">🔊</button>
+                        <input type="radio" name="status" id="empty_returning_filled" value="Empty - Returning">
+                        <div class="status-content">
+                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">🛣️</span>
+                            <strong>Empty - Returning</strong><br>
+                            <strong style="font-size: 12px; color: #333;">خالی - واپس</strong>
+                        </div>
+                    </div>
+                    
+                    <div class="status-option">
+                        <button type="button" class="voice-btn" onclick="playVoice('خالی کنٹینر واپسی کے قریب انتظار کر رہے ہیں')">🔊</button>
+                        <input type="radio" name="status" id="waiting_returning" value="Waiting Nearby Returning Empty Container Area">
+                        <div class="status-content">
+                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">🔄</span>
+                            <strong>Waiting Nearby Returning</strong><br>
+                            <strong style="font-size: 12px; color: #333;">خالی واپسی کے قریب</strong>
+                        </div>
+                    </div>
+                    
+                    <div class="status-option">
+                        <button type="button" class="voice-btn" onclick="playVoice('خالی اتارا، اندر ہے')">🔊</button>
+                        <input type="radio" name="status" id="offloaded_inside" value="Empty Container Offloaded but Inside">
+                        <div class="status-content">
+                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">📍</span>
+                            <strong>Empty Offloaded Inside</strong><br>
+                            <strong style="font-size: 12px; color: #333;">خالی اتارا - اندر</strong>
+                        </div>
+                    </div>
+                    
+                    <div class="status-option">
+                        <button type="button" class="voice-btn" onclick="playVoice('خالی اتارا، باہر ہے')">🔊</button>
+                        <input type="radio" name="status" id="offloaded_outside" value="Empty Container Offloaded and Outside">
+                        <div class="status-content">
+                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">🚪</span>
+                            <strong>Empty Offloaded Outside</strong><br>
+                            <strong style="font-size: 12px; color: #333;">خالی اتارا - باہر</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Photo Upload -->
+            <div class="form-group">
+                <label style="font-size: 16px;">📸 Container Photo / کنٹینر کی تصویر <span style="color: red;">*</span></label>
+                <div style="border: 3px dashed #ccc; border-radius: 15px; padding: 30px; text-align: center; background: #fafafa;">
+                    <input type="file" name="photo" accept="image/*" capture="camera" required 
+                           style="display: none;" id="photo-input">
+                    <label for="photo-input" style="cursor: pointer; margin: 0;">
+                        <div style="font-size: 48px; margin-bottom: 10px;">📷</div>
+                        <div style="font-size: 16px; color: #333; font-weight: 600;">Tap to Take Photo</div>
+                        <div style="font-size: 14px; color: #666; margin-top: 5px;">تصویر لینے کے لیے دبائیں</div>
+                    </label>
+                </div>
+                <p style="font-size: 13px; color: #666; margin-top: 10px; text-align: center;">
+                    📋 Container number should be visible / کنٹینر نمبر واضح نظر آنا چاہیے
+                </p>
+            </div>
+            
+            <div class="form-group">
+                <label style="font-size: 16px;">🗺️ Current Location / موجودہ مقام</label>
+                <select name="location" style="font-size: 16px;">
+                    <option value="">-- Select / منتخب کریں --</option>
+                    <option value="Dammam Port">⚓ Dammam Port / دمام بندرگاہ</option>
+                    <option value="Jubail Port">⚓ Jubail Port / الجبیل بندرگاہ</option>
+                    <option value="Riyadh">🏙️ Riyadh / ریاض</option>
+                    <option value="Jeddah">🏙️ Jeddah / جدہ</option>
+                    <option value="On the Way">🛣️ On the Way / راستے میں</option>
+                    <option value="Factory">🏭 Factory / فیکٹری</option>
+                    <option value="Border">🛂 Border / سرحد</option>
+                    <option value="Other">📍 Other / دیگر</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label style="font-size: 16px;">🎯 Heading To / کہاں جا رہے ہیں</label>
+                <select name="heading_to" style="font-size: 16px;">
+                    <option value="">-- Select Destination / منزل منتخب کریں --</option>
+                    <option value="Dammam Port">⚓ Dammam Port / دمام بندرگاہ</option>
+                    <option value="Jubail Port">⚓ Jubail Port / الجبیل بندرگاہ</option>
+                    <option value="Riyadh">🏙️ Riyadh / ریاض</option>
+                    <option value="Jeddah">🏙️ Jeddah / جدہ</option>
+                    <option value="Factory">🏭 Factory / فیکٹری</option>
+                    <option value="Warehouse">🏢 Warehouse / گودام</option>
+                    <option value="Border">🛂 Border / سرحد</option>
+                    <option value="Waiting for Load">⏳ Waiting for Load / لوڈ کا انتظار</option>
+                    <option value="Other">📍 Other / دیگر</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label style="font-size: 16px;">📝 Notes / نوٹس (Optional)</label>
+                <textarea name="notes" rows="3" placeholder="Koi masla hai? Yahan likhein... / کوئی مسئلہ ہے؟ یہاں لکھیں..." 
+                          style="font-size: 16px;"></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn" style="font-size: 20px;">
+                ✅ Send Update / اپڈیٹ بھیجیں
+            </button>
+            
+            <p style="text-align: center; margin-top: 15px; font-size: 13px; color: #888;">
+                🔒 Your information is safe / آپ کی معلومات محفوظ ہے
+            </p>
+        </form>
+        
+        <div id="success" class="success" style="padding: 30px;">
+            <div style="font-size: 48px; margin-bottom: 10px;">🎉</div>
+            <h2 style="margin-bottom: 10px;">Thank You! / شکریہ!</h2>
+            <p style="font-size: 16px;">Your update has been sent successfully.</p>
+            <p style="font-size: 16px;">آپ کی معلومات کامیابی سے بھیج دی گئی ہے۔</p>
+        </div>
+    </div>
+    
+    <script>
+        // Voice synthesis setup
+        let synth = window.speechSynthesis;
+        let voices = [];
+        
+        function populateVoiceList() {
+            voices = synth.getVoices();
+            console.log('Available voices:', voices.length);
+            voices.forEach((voice, i) => {
+                console.log(i, voice.name, voice.lang);
+            });
+        }
+        
+        populateVoiceList();
+        if (speechSynthesis.onvoiceschanged !== undefined) {
+            speechSynthesis.onvoiceschanged = populateVoiceList;
+        }
+        
+        function playVoice(text) {
+            console.log('Playing voice for:', text);
+            
+            if (!synth) {
+                alert('Voice not supported on this device');
+                return;
+            }
+            
+            // Cancel any ongoing speech
+            synth.cancel();
+            
+            const utterThis = new SpeechSynthesisUtterance(text);
+            
+            // Try to find Urdu or Hindi voice
+            let selectedVoice = voices.find(voice => voice.lang.includes('ur'));
+            if (!selectedVoice) {
+                selectedVoice = voices.find(voice => voice.lang.includes('hi'));
+            }
+            if (!selectedVoice) {
+                selectedVoice = voices.find(voice => voice.lang.includes('ar'));
+            }
+            
+            if (selectedVoice) {
+                utterThis.voice = selectedVoice;
+                console.log('Using voice:', selectedVoice.name);
+            }
+            
+            utterThis.pitch = 1;
+            utterThis.rate = 0.8;
+            utterThis.volume = 1;
+            
+            utterThis.onstart = function() {
+                console.log('Speech started');
+            };
+            
+            utterThis.onerror = function(event) {
+                console.error('Speech error:', event.error);
+                alert('Voice error: ' + event.error);
+            };
+            
+            synth.speak(utterThis);
+        }
+        
+        function testVoice() {
+            playVoice('آواز چیک کریں۔ لوڈنگ کے قریب انتظار کر رہے ہیں');
+        }
+        
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('success').style.display = 'block';
+            this.style.display = 'none';
+        });
+        
+        // Auto-fill driver and truck from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const driver = urlParams.get('driver');
+        const truck = urlParams.get('truck');
+        
+        if (driver) {
+            document.getElementById('driver').value = driver;
+        }
+        if (truck) {
+            document.getElementById('truck').value = truck;
+        }
+        
+        // Force reload if page is loaded from cache
+        if (performance.navigation.type === 2) {
+            location.reload(true);
+        }
+    </script>
+</body>
+</html>
