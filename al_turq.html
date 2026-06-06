@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Al turq (Abu Abdullah) - Trip Status Form</title>
+    <title>Al Turq - Trip Status Form</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -56,85 +56,159 @@
 </head>
 <body>
     <div class="container">
-        <h1>🚛 Al turq (Abu Abdullah)</h1>
-        <p class="subtitle">Trip Status Update Form</p>
+        <h1>🚛 Al Turq</h1>
+        <p class="subtitle" style="font-size: 16px; color: #555;">Trip Update / سفر کی تازہ ترین معلومات</p>
         
         <form action="https://formspree.io/f/FORMSPREE_ID" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="_subject" value="Al turq Status Update">
-            <input type="hidden" name="vendor" value="Al turq (Abu Abdullah)">
+            <input type="hidden" name="_subject" value="Al Turq Status Update">
+            <input type="hidden" name="vendor" value="Al Turq">
             
-            <div class="form-group">
-                <label>Driver Name *</label>
-                <select name="driver" required>
-                    <option value="">Select Driver</option>
-                    <option value="MOHAMMAD ISTAKHAR">MOHAMMAD ISTAKHAR</option>
-                    <option value="MAFOOZ KHAN">MAFOOZ KHAN</option>
-                </select>
+            <div class="form-group" style="background: #e8f5e9; padding: 15px; border-radius: 10px; border-right: 4px solid #4caf50;">
+                <label style="color: #2e7d32; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Driver / ڈرائیور</label>
+                <input type="text" id="driver" name="driver" style="background: transparent; border: none; font-size: 18px; font-weight: bold; color: #1b5e20; padding: 5px 0;" required>
+            </div>
+            
+            <div class="form-group" style="background: #fff3e0; padding: 15px; border-radius: 10px; border-right: 4px solid #ff9800;">
+                <label style="color: #e65100; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Truck Number / ٹرک نمبر</label>
+                <input type="text" id="truck" name="truck" style="background: transparent; border: none; font-size: 18px; font-weight: bold; color: #e65100; padding: 5px 0;" required>
             </div>
             
             <div class="form-group">
-                <label>Truck Number *</label>
-                <select name="truck" required>
-                    <option value="">Select Truck</option>
-                    <option value="7196 HXA">7196 HXA</option>
-                    <option value="5149 VXA">5149 VXA</option>
-                </select>
+                <label style="font-size: 16px;">📦 Container Number / کنٹینر نمبر <span style="color: red;">*</span></label>
+                <input type="text" id="container" name="container" placeholder="MEDU 1234567" required 
+                       style="font-size: 18px; text-align: center; letter-spacing: 2px;">
+                <p style="font-size: 13px; color: #666; margin-top: 5px;">Container number likhein / کنٹینر نمبر لکھیں</p>
             </div>
             
             <div class="form-group">
-                <label>Container Number *</label>
-                <input type="text" name="container" placeholder="e.g., MEDU 1234567" required>
-            </div>
-            
-            <div class="form-group">
-                <label>Current Status *</label>
+                <label style="font-size: 16px;">📍 Kahan Hain? / کہاں ہیں؟ <span style="color: red;">*</span></label>
                 <div class="status-grid">
                     <div class="status-option">
                         <input type="radio" name="status" id="reached" value="Reached" required>
-                        <label for="reached">📍 Reached</label>
+                        <label for="reached" style="font-size: 14px;">
+                            <span style="font-size: 24px; display: block; margin-bottom: 5px;">📍</span>
+                            <strong>Reached</strong><br>
+                            <span style="font-size: 12px; opacity: 0.8;">پہنچ گئے</span>
+                        </label>
                     </div>
                     <div class="status-option">
                         <input type="radio" name="status" id="loading" value="Loading">
-                        <label for="loading">📦 Loading</label>
+                        <label for="loading" style="font-size: 14px;">
+                            <span style="font-size: 24px; display: block; margin-bottom: 5px;">📦</span>
+                            <strong>Loading</strong><br>
+                            <span style="font-size: 12px; opacity: 0.8;">لوڈنگ ہو رہی</span>
+                        </label>
                     </div>
                     <div class="status-option">
                         <input type="radio" name="status" id="unloaded" value="Unloaded">
-                        <label for="unloaded">✅ Unloaded</label>
+                        <label for="unloaded" style="font-size: 14px;">
+                            <span style="font-size: 24px; display: block; margin-bottom: 5px;">✅</span>
+                            <strong>Unloaded</strong><br>
+                            <span style="font-size: 12px; opacity: 0.8;">خالی ہو گیا</span>
+                        </label>
                     </div>
                     <div class="status-option">
                         <input type="radio" name="status" id="left" value="Left">
-                        <label for="left">🚪 Left</label>
+                        <label for="left" style="font-size: 14px;">
+                            <span style="font-size: 24px; display: block; margin-bottom: 5px;">🚪</span>
+                            <strong>Left</strong><br>
+                            <span style="font-size: 12px; opacity: 0.8;">چلے گئے</span>
+                        </label>
                     </div>
                 </div>
             </div>
             
             <div class="form-group">
-                <label>Location/Port *</label>
-                <input type="text" name="location" placeholder="e.g., Dammam Port Gate 3" required>
+                <label style="font-size: 16px;">🗺️ Location / مقام <span style="color: red;">*</span></label>
+                <select name="location" required style="font-size: 16px;">
+                    <option value="">-- Select Location / مقام منتخب کریں --</option>
+                    <option value="Dammam Port">⚓ Dammam Port / دمام بندرگاہ</option>
+                    <option value="Jubail Port">⚓ Jubail Port / الجبیل بندرگاہ</option>
+                    <option value="Riyadh">🏙️ Riyadh / ریاض</option>
+                    <option value="Jeddah">🏙️ Jeddah / جدہ</option>
+                    <option value="On the Way">🛣️ On the Way / راستے میں</option>
+                    <option value="Factory">🏭 Factory / فیکٹری</option>
+                    <option value="Border">🛂 Border / سرحد</option>
+                    <option value="Other">📍 Other / دیگر</option>
+                </select>
             </div>
             
             <div class="form-group">
-                <label>Container Photo *</label>
-                <input type="file" name="photo" accept="image/*" capture="camera" required 
-                       style="padding: 15px; border: 2px dashed #ccc; border-radius: 10px; width: 100%;">
-                <p style="font-size: 12px; color: #666; margin-top: 5px;">Make sure container number is visible</p>
+                <label style="font-size: 16px;">📸 Container Photo / کنٹینر کی تصویر <span style="color: red;">*</span></label>
+                <div style="border: 3px dashed #ccc; border-radius: 15px; padding: 30px; text-align: center; background: #fafafa;">
+                    <input type="file" name="photo" accept="image/*" capture="camera" required 
+                           style="display: none;" id="photo-input">
+                    <label for="photo-input" style="cursor: pointer; margin: 0;">
+                        <div style="font-size: 48px; margin-bottom: 10px;">📷</div>
+                        <div style="font-size: 16px; color: #333; font-weight: 600;">Tap to Take Photo</div>
+                        <div style="font-size: 14px; color: #666; margin-top: 5px;">تصویر لینے کے لیے دبائیں</div>
+                    </label>
+                </div>
+                <p style="font-size: 13px; color: #666; margin-top: 10px; text-align: center;">
+                    📋 Container number should be visible / کنٹینر نمبر واضح نظر آنا چاہیے
+                </p>
             </div>
             
             <div class="form-group">
-                <label>Additional Notes</label>
-                <textarea name="notes" rows="3" placeholder="Any delays or issues..."></textarea>
+                <label style="font-size: 16px;">📝 Notes / نوٹس (Optional)</label>
+                <textarea name="notes" rows="3" placeholder="Koi masla hai? Yahan likhein... / کوئی مسئلہ ہے؟ یہاں لکھیں..." 
+                          style="font-size: 16px;"></textarea>
             </div>
             
-            <button type="submit" class="submit-btn">Submit Update</button>
+            <button type="submit" class="submit-btn" style="font-size: 20px;">
+                ✅ Send Update / اپڈیٹ بھیجیں
+            </button>
+            
+            <p style="text-align: center; margin-top: 15px; font-size: 13px; color: #888;">
+                🔒 Your information is safe / آپ کی معلومات محفوظ ہے
+            </p>
         </form>
         
-        <div id="success" class="success">✅ Status updated successfully!</div>
+        <div id="success" class="success" style="padding: 30px;">
+            <div style="font-size: 48px; margin-bottom: 10px;">🎉</div>
+            <h2 style="margin-bottom: 10px;">Thank You! / شکریہ!</h2>
+            <p style="font-size: 16px;">Your update has been sent successfully.</p>
+            <p style="font-size: 16px;">آپ کی معلومات کامیابی سے بھیج دی گئی ہے۔</p>
+        </div>
     </div>
     
     <script>
         document.querySelector('form').addEventListener('submit', function() {
             document.getElementById('success').style.display = 'block';
         });
+
+        function getUrlParams() {
+            const params = {};
+            const queryString = window.location.search.slice(1);
+            const pairs = queryString.split('&');
+            for (let pair of pairs) {
+                const [key, value] = pair.split('=');
+                if (key && value) {
+                    params[decodeURIComponent(key)] = decodeURIComponent(value.replace(/\+/g, ' '));
+                }
+            }
+            return params;
+        }
+
+        window.onload = function() {
+            const params = getUrlParams();
+            if (params.driver) {
+                document.getElementById('driver').value = params.driver;
+                document.getElementById('driver').readOnly = true;
+            }
+            if (params.truck) {
+                document.getElementById('truck').value = params.truck;
+                document.getElementById('truck').readOnly = true;
+            }
+            if (params.container) {
+                document.getElementById('container').value = params.container;
+            }
+        };
+
+        history.pushState(null, null, location.href);
+        window.onpopstate = function() {
+            history.pushState(null, null, location.href);
+        };
     </script>
 </body>
 </html>
