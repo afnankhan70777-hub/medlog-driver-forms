@@ -66,33 +66,17 @@
             
             <div class="form-group">
                 <label>Driver Name *</label>
-                <select name="driver" required>
-                    <option value="">Select Driver</option>
-                    <option value="AHMAD NAWAZ KHAN">AHMAD NAWAZ KHAN</option>
-                    <option value="BISHNU BAHADUR THING">BISHNU BAHADUR THING</option>
-                    <option value="MAN BAHADUR GURUNG">MAN BAHADUR GURUNG</option>
-                    <option value="NABRAJ DHAMI">NABRAJ DHAMI</option>
-                    <option value="RAJENDRA THAPA">RAJENDRA THAPA</option>
-                    <option value="YOURAJ SURYABANSHI">YOURAJ SURYABANSHI</option>
-                </select>
+                <input type="text" id="driver" name="driver" placeholder="Driver name" required>
             </div>
             
             <div class="form-group">
                 <label>Truck Number *</label>
-                <select name="truck" required>
-                    <option value="">Select Truck</option>
-                    <option value="6433 TSA">6433 TSA</option>
-                    <option value="2747 EDA">2747 EDA</option>
-                    <option value="4383 RXA">4383 RXA</option>
-                    <option value="4403 RXA">4403 RXA</option>
-                    <option value="2410 GSA">2410 GSA</option>
-                    <option value="4402 RXA">4402 RXA</option>
-                </select>
+                <input type="text" id="truck" name="truck" placeholder="Truck number" required>
             </div>
             
             <div class="form-group">
                 <label>Container Number *</label>
-                <input type="text" name="container" placeholder="e.g., MEDU 1234567" required>
+                <input type="text" id="container" name="container" placeholder="e.g., MEDU 1234567" required>
             </div>
             
             <div class="form-group">
@@ -146,6 +130,56 @@
         document.querySelector('form').addEventListener('submit', function() {
             document.getElementById('success').style.display = 'block';
         });
+
+        // Get URL parameters
+        function getUrlParams() {
+            const params = {};
+            const queryString = window.location.search.slice(1);
+            const pairs = queryString.split('&');
+            for (let pair of pairs) {
+                const [key, value] = pair.split('=');
+                if (key && value) {
+                    params[decodeURIComponent(key)] = decodeURIComponent(value.replace(/\+/g, ' '));
+                }
+            }
+            return params;
+        }
+
+        // Pre-fill form on page load
+        window.onload = function() {
+            const params = getUrlParams();
+            
+            // Pre-fill driver name
+            if (params.driver) {
+                document.getElementById('driver').value = params.driver;
+                document.getElementById('driver').readOnly = true;
+            }
+            
+            // Pre-fill truck number
+            if (params.truck) {
+                document.getElementById('truck').value = params.truck;
+                document.getElementById('truck').readOnly = true;
+            }
+            
+            // Pre-fill container
+            if (params.container) {
+                document.getElementById('container').value = params.container;
+            }
+            
+            // Show driver info banner
+            if (params.driver) {
+                const banner = document.createElement('div');
+                banner.style.cssText = 'background: #e3f2fd; padding: 15px; border-radius: 10px; margin-bottom: 20px; border-left: 4px solid #2196f3;';
+                banner.innerHTML = '<strong>👤 Driver:</strong> ' + params.driver + '<br><strong>🚛 Truck:</strong> ' + (params.truck || 'N/A');
+                document.querySelector('.container').insertBefore(banner, document.querySelector('h1').nextSibling);
+            }
+        };
+
+        // Prevent going back to menu
+        history.pushState(null, null, location.href);
+        window.onpopstate = function() {
+            history.pushState(null, null, location.href);
+        };
     </script>
 </body>
 </html>
