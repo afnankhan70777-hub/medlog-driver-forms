@@ -75,6 +75,17 @@
                 <h4>?? Driver Information</h4>
                 <p><strong>Name (EN):</strong> <span id="driver-name-en"></span></p>
                 <p><strong>Name (AR):</strong> <span id="driver-name-ar"></span></p>
+            </div>
+            
+            <div class="form-group">
+                <label for="truck">Select Truck:</label>
+                <select id="truck" onchange="updateTruckInfo()" disabled>
+                    <option value="">-- Choose Truck --</option>
+                </select>
+            </div>
+            
+            <div id="truck-info" class="driver-info" style="display: none; background: #fff3e0; border-left-color: #ff9800;">
+                <h4 style="color: #e65100;">?? Truck Information</h4>
                 <p><strong>Truck (EN):</strong> <span id="truck-en"></span></p>
                 <p><strong>Truck (AR):</strong> <span id="truck-ar"></span></p>
             </div>
@@ -99,7 +110,7 @@
             <ol>
                 <li>Select the <strong>vendor</strong> from the dropdown</li>
                 <li>Select the <strong>driver</strong> from the list</li>
-                <li>Truck number will auto-fill based on driver</li>
+                <li>Select the <strong>truck</strong> from the dropdown</li>
                 <li>Optionally enter a container number</li>
                 <li>Click <strong>"Generate Unique Driver Link"</strong></li>
                 <li>Copy the link and send to driver via WhatsApp</li>
@@ -141,11 +152,22 @@
         function updateDrivers() {
             const vendor = document.getElementById('vendor').value;
             const driverSelect = document.getElementById('driver');
+            const truckSelect = document.getElementById('truck');
             const driverInfo = document.getElementById('driver-info');
+            const truckInfo = document.getElementById('truck-info');
             
+            // Reset driver dropdown
             driverSelect.innerHTML = '<option value="">-- Choose Driver --</option>';
             driverSelect.disabled = !vendor;
+            
+            // Reset truck dropdown
+            truckSelect.innerHTML = '<option value="">-- Choose Truck --</option>';
+            truckSelect.disabled = true;
+            
+            // Hide info panels
             driverInfo.style.display = 'none';
+            truckInfo.style.display = 'none';
+            currentDriver = null;
             
             if (vendor && vendorData[vendor]) {
                 const drivers = vendorData[vendor].sort((a, b) => a.driver_en.localeCompare(b.driver_en));
@@ -162,17 +184,49 @@
             const vendor = document.getElementById('vendor').value;
             const driverIndex = document.getElementById('driver').value;
             const driverInfo = document.getElementById('driver-info');
+            const truckSelect = document.getElementById('truck');
+            const truckInfo = document.getElementById('truck-info');
+            
+            // Reset truck dropdown
+            truckSelect.innerHTML = '<option value="">-- Choose Truck --</option>';
+            truckInfo.style.display = 'none';
             
             if (vendor && driverIndex !== '' && vendorData[vendor]) {
                 currentDriver = vendorData[vendor][driverIndex];
+                
+                // Show driver info
                 document.getElementById('driver-name-en').textContent = currentDriver.driver_en;
                 document.getElementById('driver-name-ar').textContent = currentDriver.driver_ar || 'N/A';
-                document.getElementById('truck-en').textContent = currentDriver.truck_en || 'N/A';
-                document.getElementById('truck-ar').textContent = currentDriver.truck_ar || 'N/A';
                 driverInfo.style.display = 'block';
+                
+                // Populate truck dropdown
+                if (currentDriver.truck_en) {
+                    const option = document.createElement('option');
+                    option.value = '0';
+                    option.textContent = currentDriver.truck_en;
+                    truckSelect.appendChild(option);
+                    truckSelect.disabled = false;
+                    
+                    // Auto-select the truck
+                    truckSelect.value = '0';
+                    updateTruckInfo();
+                }
             } else {
                 driverInfo.style.display = 'none';
                 currentDriver = null;
+                truckSelect.disabled = true;
+            }
+        }
+        
+        function updateTruckInfo() {
+            const truckInfo = document.getElementById('truck-info');
+            
+            if (currentDriver && currentDriver.truck_en) {
+                document.getElementById('truck-en').textContent = currentDriver.truck_en;
+                document.getElementById('truck-ar').textContent = currentDriver.truck_ar || 'N/A';
+                truckInfo.style.display = 'block';
+            } else {
+                truckInfo.style.display = 'none';
             }
         }
         
