@@ -140,7 +140,7 @@
                         <label for="waiting_loading_empty">
                             <span style="font-size: 20px; display: block; margin-bottom: 5px;">⏳</span>
                             <strong>Waiting Nearby Loading</strong><br>
-                            <strong style="font-size: 12px;">لوڈنگ کے قریب انتظار</strong>
+                            <strong style="font-size: 12px;">لوڈ کرنے والی جگہ کے قریب انتظار کر رہے ہیں</strong>
                             <div class="audio-status">🔊 Tap for audio</div>
                         </label>
                     </div>
@@ -151,7 +151,7 @@
                         <label for="waiting_unloading">
                             <span style="font-size: 20px; display: block; margin-bottom: 5px;">🕐</span>
                             <strong>Waiting Nearby Unloading</strong><br>
-                            <strong style="font-size: 12px;">ان لوڈنگ کے قریب انتظار</strong>
+                            <strong style="font-size: 12px;">لوڈ اتارنے والی جگہ کے قریب انتظار کر رہے ہیں</strong>
                             <div class="audio-status">🔊 Tap for audio</div>
                         </label>
                     </div>
@@ -162,40 +162,26 @@
                         <label for="unloaded_inside">
                             <span style="font-size: 20px; display: block; margin-bottom: 5px;">✅</span>
                             <strong>Unloaded but Inside</strong><br>
-                            <strong style="font-size: 12px;">خالی ہوا - اندر</strong>
+                            <strong style="font-size: 12px;">لوڈ اتار گیا مگر ابھی بھی اندر ہیں</strong>
                             <div class="audio-status">🔊 Tap for audio</div>
                         </label>
                     </div>
-                    
-                    <div class="status-option">
-                        <button type="button" class="audio-btn" onclick="playAudio('empty_left.mp3', this)">🔊</button>
-                        <input type="radio" name="status" id="empty_left" value="Empty and Left">
-                        <label for="empty_left">
-                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">🚗</span>
-                            <strong>Empty and Left</strong><br>
-                            <strong style="font-size: 12px;">خالی - چلے گئے</strong>
-                            <div class="audio-status">🔊 Tap for audio</div>
-                        </label>
-                    </div>
-                    
-                    <div class="status-option">
-                        <button type="button" class="audio-btn" onclick="playAudio('empty_returning.mp3', this)">🔊</button>
-                        <input type="radio" name="status" id="empty_returning" value="Empty - Returning">
-                        <label for="empty_returning">
-                            <span style="font-size: 20px; display: block; margin-bottom: 5px;">🛣️</span>
-                            <strong>Empty - Returning</strong><br>
-                            <strong style="font-size: 12px;">خالی - واپس</strong>
-                            <div class="audio-status">🔊 Tap for audio</div>
-                        </label>
-                    </div>
-                    
+                </div>
+            </div>
+            
+            <!-- Loaded Container Section -->
+            <div class="form-group">
+                <div class="section-header filled-header">
+                    📦 Loaded Container / لوڈ شدہ کنٹینر
+                </div>
+                <div class="status-grid">
                     <div class="status-option">
                         <button type="button" class="audio-btn" onclick="playAudio('loaded_but_inside.mp3', this)">🔊</button>
                         <input type="radio" name="status" id="loaded_but_inside" value="Loaded but Inside">
                         <label for="loaded_but_inside">
                             <span style="font-size: 20px; display: block; margin-bottom: 5px;">📦</span>
                             <strong>Loaded but Inside</strong><br>
-                            <strong style="font-size: 12px;">لوڈ شدہ - اندر</strong>
+                            <strong style="font-size: 12px;">لوڈ مل گیا مگر ابھی بھی اندر ہیں</strong>
                             <div class="audio-status">🔊 Tap for audio</div>
                         </label>
                     </div>
@@ -206,7 +192,7 @@
                         <label for="loaded_and_left">
                             <span style="font-size: 20px; display: block; margin-bottom: 5px;">🚚</span>
                             <strong>Loaded and Left</strong><br>
-                            <strong style="font-size: 12px;">لوڈ شدہ - چلے گئے</strong>
+                            <strong style="font-size: 12px;">لوڈ مل گیا اور نکل گئے</strong>
                             <div class="audio-status">🔊 Tap for audio</div>
                         </label>
                     </div>
